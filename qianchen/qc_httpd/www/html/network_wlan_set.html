@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+
+		
+	<!-- 公共 script 部分 -->
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+	
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("network_set");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/network_set.png"> <strong>网络设置 >> 无线设置</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row">
+							<center>
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<div class="layui-row grid-demo radius" style="padding: 20px; line-height: 10px;">
+										<form class="layui-form" action="" method="post">
+											<div class="layui-col-xs1 layui-col-sm1 layui-col-md1">
+												<div class="layui-icon">
+													<img src="../img/2.4G.png">
+												</div>
+											</div>
+											<div class="layui-col-xs11 layui-col-sm11 layui-col-md11">
+												<p class="font-size-18px tit" style="color:#1296db;">无线频段: 2.4 G</p><br><hr>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>2.4G 无线网络</strong></label>
+													<div class="layui-input-inline p20">
+														<input type="checkbox" checked name="auth_wifi_2g_switch" id="auth_wifi_2g_switch" lay-skin="switch" lay-filter="auth_wifi_2g_switch" lay-text="开启|关闭">
+													</div>
+												</div>
+											</div>
+											<div id="set_2g_div" style="display:block">
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>SSID</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="text" name="auth_2g_ssid" id="auth_2g_ssid" lay-verify="ssid" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>密码</strong> </label>
+														<div class="layui-input-block p30">
+															<input type="text" name="auth_2g_password" id="auth_2g_password" onkeyup="check_password('auth_2g_password');" lay-verify="password" autocomplete="off" placeholder="可选填" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>信道</strong></label>
+														<div class="layui-input-block p30">
+															<select name="auth_2g_channel" id="auth_2g_channel" lay-filter="auth_2g_channel">
+																<option value="auto" selected>自动</option>
+																<option value="1">2.412 GHz (Channel 1)</option>
+																<option value="2">2.417 GHz (Channel 2)</option>
+																<option value="3">2.422 GHz (Channel 3)</option>
+																<option value="4">2.427 GHz (Channel 4)</option>
+																<option value="5">2.432 GHz (Channel 5)</option>
+																<option value="6">2.437 GHz (Channel 6)</option>
+																<option value="7">2.442 GHz (Channel 7)</option>
+																<option value="8">2.447 GHz (Channel 8)</option>
+																<option value="9">2.452 GHz (Channel 9)</option>
+																<option value="10">2.457 GHz (Channel 10)</option>
+																<option value="11">2.462 GHz (Channel 11)</option>
+																<option value="12">2.467 GHz (Channel 12)</option>
+																<option value="13">2.472 GHz (Channel 13)</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>频率带宽</strong></label>
+														<div class="layui-input-block p30">
+															<select name="auth_2g_bandwidth" id="auth_2g_bandwidth" lay-filter="auth_2g_bandwidth">
+																<option value="HT20" selected>20 Mhz</option>
+																<option value="HT40">40 Mhz</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>允许最弱信号</strong></label>
+														<div class="layui-input-block p30">
+															<select name="auth_2g_signal_min" id="auth_2g_signal_min" lay-filter="auth_2g_signal_min">
+																<option value="0" selected>不限</option>
+																<option value="-100">-100</option>
+																<option value="-90">-90</option>
+																<option value="-85">-85</option>
+																<option value="-80">-80</option>
+																<option value="-75">-75</option>
+																<option value="-70">-70</option>
+																<option value="-65">-65</option>
+																<option value="-60">-60</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>隐藏SSID</strong></label>
+														<div class="layui-input-inline p20">
+															<input type="checkbox" checked name="auth_2g_ssid_hidden" id="auth_2g_ssid_hidden" lay-skin="switch" lay-filter="auth_2g_ssid_hidden" lay-text="显示|隐藏">
+														</div>
+														<div class="layui-form-mid layui-word-aux">(无线终端输入此SSID仍然能够连接到此热点)</div>
+													</div>
+												</div>
+											</div>
+											<!-- 提交 -->
+											<div class="layui-col-xs10 layui-col-sm10 layui-col-md10">
+												<div class="layui-form-item">
+													<div class="layui-input-block p30">
+														<button class="layui-btn layui-btn-normal" lay-submit="auth_5g_wlan_submit" lay-filter="auth_2g_wlan_submit"> <strong>提交</strong></button>
+														<button type="reset" class="layui-btn layui-btn-primary"> <strong>重置</strong></button>
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<span style="color:red" id="2g_tips"> </span>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="H20"></div><hr><br>
+											</div>
+										</form>
+										<!-- 5G -->
+										<form class="layui-form" action="">
+											<div class="layui-col-xs1 layui-col-sm1 layui-col-md1">
+												<div class="layui-icon">
+													<img src="../img/5G.png">
+												</div>
+											</div>
+											<div class="layui-col-xs11 layui-col-sm11 layui-col-md11">
+												<p class="font-size-18px tit" style="color:#1296db;">无线频段: 5 G</p><br><hr>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>5G 无线网络</strong></label>
+													<div class="layui-input-inline p20">
+														<input type="checkbox" checked name="auth_wifi_5g_switch" id="auth_wifi_5g_switch" lay-skin="switch" lay-filter="auth_wifi_5g_switch" lay-text="开启|关闭">
+													</div>
+												</div>
+											</div>
+											<div id="set_5g_div" style="display:block">
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>SSID</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="text" name="auth_5g_ssid" id="auth_5g_ssid" lay-verify="ssid" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>密码</strong> </label>
+														<div class="layui-input-block p30">
+															<input type="text" name="auth_5g_password" id="auth_5g_password" onkeyup="check_password('auth_5g_password');" lay-verify="password" autocomplete="off" placeholder="可选填" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>信道</strong></label>
+														<div class="layui-input-block p30">
+															<select name="auth_5g_channel" id="auth_5g_channel" lay-filter="auth_5g_channel">
+																<option value="auto" selected>自动</option>
+																<option value="36">5.180 GHz (Channel 36)</option>
+																<option value="40">5.200 GHz (Channel 40)</option>
+																<option value="44">5.220 GHz (Channel 44)</option>
+																<option value="48">5.240 GHz (Channel 48)</option>
+																<option value="52">5.260 GHz (Channel 52)</option>
+																<option value="56">5.280 GHz (Channel 56)</option>
+																<option value="60">5.300 GHz (Channel 60)</option>
+																<option value="64">5.320 GHz (Channel 64)</option>
+																<option value="149">5.745 GHz (Channel 149)</option>
+																<option value="153">5.765 GHz (Channel 153)</option>
+																<option value="157">5.785 GHz (Channel 157)</option>
+																<option value="161">5.805 GHz (Channel 161)</option>
+																<option value="165">5.825 GHz (Channel 165)</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>频率带宽</strong></label>
+														<div class="layui-input-block p30">
+															<select name="auth_5g_bandwidth" id="auth_5g_bandwidth" lay-filter="auth_5g_bandwidth">
+																<option value="HT20" selected>20 Mhz</option>
+																<option value="HT40">40 Mhz</option>
+																<option value="VHT80">80 Mhz</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>允许最弱信号</strong></label>
+														<div class="layui-input-block p30">
+															<select name="auth_5g_signal_min" id="auth_5g_signal_min" lay-filter="auth_5g_signal_min">
+																<option value="0" selected>不限</option>
+																<option value="-100">-100</option>
+																<option value="-90">-90</option>
+																<option value="-85">-85</option>
+																<option value="-80">-80</option>
+																<option value="-75">-75</option>
+																<option value="-70">-70</option>
+																<option value="-65">-65</option>
+																<option value="-60">-60</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>隐藏SSID</strong></label>
+														<div class="layui-input-inline p20">
+															<input type="checkbox" checked name="auth_5g_ssid_hidden" id="auth_5g_ssid_hidden" lay-skin="switch" lay-filter="auth_5g_ssid_hidden" lay-text="显示|隐藏">
+														</div>
+														<div class="layui-form-mid layui-word-aux">(无线终端输入此SSID仍然能够连接到此热点)</div>
+													</div>
+												</div>
+											</div>
+											<!-- 提交 -->
+											<div class="layui-col-xs10 layui-col-sm10 layui-col-md10">
+												<div class="layui-form-item">
+													<div class="layui-input-block p30">
+														<button class="layui-btn layui-btn-normal" lay-submit="auth_5g_wlan_submit" lay-filter="auth_5g_wlan_submit"> <strong>提交</strong></button>
+														<button type="reset" class="layui-btn layui-btn-primary"> <strong>重置</strong></button>
+													</div>
+												</div>
+												<div class="H20"></div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<span style="color:red" id="5g_tips"> </span>
+											</div>
+										</form>
+									</div>
+								</div>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script src="../script/network_set_wlan.js" charset="utf-8"></script>
+
+</body>
+</html>

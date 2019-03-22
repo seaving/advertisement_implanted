@@ -1,0 +1,6 @@
+---- qcdog Matches (5 in 3 files) ----
+Main.c (e:\work\share\route_pri\project\rp\qc\apctrl\src):	system("killall qcdog");
+Main.c (e:\work\share\route_pri\project\rp\qc\apctrl\src):	if ((access(FILE_PATH"/qcdog", F_OK)) == 0)
+Main.c (e:\work\share\route_pri\project\rp\qc\apctrl\src):		system(FILE_PATH"/qcdog &");
+Monitor.c (e:\work\share\route_pri\project\rp\qc\apctrl\src):		LOG_SAVE("qcdog exit !!!\n");
+Monitor.h (e:\work\share\route_pri\project\rp\qc\apctrl\src):#define MONITOR_PROGRAM		"qcdog"

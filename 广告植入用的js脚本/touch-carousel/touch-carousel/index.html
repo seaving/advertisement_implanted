@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>触屏版轮播广告demo</title>
+    <meta name="viewport" charset="utf-8" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=1.0">
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+    .qqqcccCarousel {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      position: fixed;
+      bottom: 0;
+    }
+    .qqqcccClose {
+        width: 100%;
+        height: 18px;
+    }
+    .qqqcccClose img {
+        float: right;
+        width: 25px;
+        height: 18px;
+        margin-right: 5px;
+    }
+    .qqqcccClose a {
+        background-color: white;
+        font-size:12px;
+        margin-left: 5px;
+        padding:0;
+        background-color:white;
+    }
+    .qqqcccCarousel .qqqcccItem {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .qqqcccCarousel .qqqcccItem a img {
+      width: 100%;
+      height: 100%;
+    }
+    .qqqcccPageIndicator {
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      z-index: 10;
+      width: 100%;
+    }
+    .qqqcccPageIndicator div {
+        width: 4px;
+        height: 4px;
+        display: inline-block;
+        position: relative;
+        margin-right: 3px;
+        border-radius: 100%;
+    }
+    .qqqcccPageIndicator .active:after {
+        background: rgba(255,0,0,1) !important;
+    }
+    .qqqcccPageIndicator div:after {
+        content: "";
+        width: 4px;
+        height: 4px;
+        background: rgba(0,0,255,1);
+        border-radius: 100%;
+        position: absolute;
+    }
+  </style>
+</head>
+<body >
+
+<h3 style="height:200px;background-color:#ff9;">阿萨德覅面覅是大神大神嗲我和覅五黑覅为海富</h3>
+
+<h1 style="height:200px;background-color:#498239;">我哈客户反馈快睡吧大部分空间和</h1>
+
+<select style="margin-bottom:50px;">
+  <option value="1">江西</option>
+  <option value="2">江西</option>
+  <option value="3">江西</option>
+  <option value="4">江西</option>
+  <option value="5">江西</option>
+  <option value="6">江西</option>
+</select>
+
+<div style="height:100px;background-color:#8f6;"></div>
+
+<h3 style="height:200px;background-color:#4ff;">alksnflfnlaksndflksn</h3>
+
+更多关于div的知识 >
+等待您来回答
+0回答在ASP中，css设置了overflow:scroll,为什么滚动条不滚动，内...
+ 
+精彩知识在知道
+百度知道品牌合作指南
+【真相问答机】，揭穿流言！
+免费领取《知道日报》主题专刊
+知道大数据，用数据解读生活点滴
+知道大数据，用数据解读生活点滴
+知道大数据，用数据解读生活点滴
+知道大数据，用数据解读生活点滴
+知道大数据，用数据解读生活点滴
+
+知道大数据，用数据解读生活点滴
+知道大数据，用数据解读生活点滴
+知道大数据，用数据解读生活点滴
+
+
+  <div id="qqqcccCarousel" class="qqqcccCarousel" ontouchstart="" >
+        <div class="qqqcccItem">
+            <div class="qqqcccClose"><a>广告</a><img src="img/close.png" onclick="closeEvent();"></div>
+            <a><img src="img/1.jpg" alt="1"/></a>
+        </div>
+        <div class="qqqcccItem">
+            <div class="qqqcccClose"><a>广告</a><img src="img/close.png" onclick="closeEvent();"></div>
+            <a><img src="img/2.jpg" alt="2"/></a>
+        </div>
+
+        <div class="qqqcccItem">
+            <div class="qqqcccClose"><a>广告</a><img src="img/close.png" onclick="closeEvent();"></div>
+            <a><img src="img/3.jpg" alt="3"/></a>
+        </div>
+        <div class="qqqcccItem">
+            <div class="qqqcccClose"><a>广告</a><img src="img/close.png" onclick="closeEvent();"></div>
+            <a><img src="img/4.jpg" alt="4"/></a>
+        </div>
+        <div class="qqqcccItem">
+            <div class="qqqcccClose"><a>广告</a><img src="img/close.png" onclick="closeEvent();"></div>
+            <a><img src="img/5.jpg" alt="5"/></a>
+        </div>
+    <div class="qqqcccPageIndicator">
+        <div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+
+  <script>
+    function Node(data) {
+      this.data = data;
+      this.prev = null;
+      this.next = null;
+      this.index = -1;
+    }
+
+    function LinkList() {
+        var _nodes = [];
+        this.head = null;
+        this.last = null;
+        if (typeof this.append !== "function") {
+            LinkList.prototype.append = function (node) {
+                if (this.head == null) {
+                    this.head = node;
+                    this.last = this.head;
+                } else {
+                    this.head.prev = node;
+                    this.last.next = node;
+                    node.prev = this.last;
+                    node.next = this.head;
+                    this.last = node;
+                }
+                node.index = _nodes.length; //务必在push前设置node.index
+                _nodes.push(node);
+            }
+        }
+    }
+
+    function closeEvent() {
+        var qqqcccCarousel = document.getElementById('qqqcccCarousel');
+        document.body.removeChild(qqqcccCarousel);
+    }
+
+    function CreateCarousel(containerClass, itemClass) {
+        var _carousel = {};
+        var _itemChangedHandler = null;
+        var _container = document.querySelector("." + containerClass);
+        var _items = document.querySelectorAll("." + itemClass);
+        var list = new LinkList();
+        for(var i = 0; i < _items.length; i++) {
+            list.append(new Node(_items[i]));
+        }
+        var _prev = null;
+        var _current = list.head;
+        var _normalZIndex = _current.data.style.zIndex;
+        var _activeZIndex = _normalZIndex + 1;
+        var _pageWidth = _current.data.offsetWidth; //页面宽度
+
+        positionItems();
+        zindexItems(_current, _activeZIndex);
+
+        function transformItem(item, translate) {
+            item.style.webkitTransform = "translate3d(" + translate + "px,0,0)";
+        }
+
+        function zindexItems(node, zindex) {
+            if (node.prev) {
+                zindexItem(node.prev.data, zindex);
+            }
+            if (node.next) {
+                zindexItem(node.next.data, zindex);
+            }
+            zindexItem(node.data, zindex);
+        }
+
+        function zindexItem(item, zindex) {
+            item.style.zIndex = zindex;
+        }
+
+        function transitionItems(node, isTransition) {
+            var transition = isTransition ? "0.3s ease -webkit-transform" : "";
+            if (node !== null) {
+                //使用动画过渡让页面滑动到最终的位置
+                node.data.style.webkitTransition = transition;
+                if (node.prev) {
+                    node.prev.data.style.webkitTransition = transition;
+                }
+                if (node.next) {
+                    node.next.data.style.webkitTransition = transition;
+                }
+            }
+        }
+
+        function moveItems(translate) {
+            //页面向左滑动
+            if(translate > 0) {
+                if (_current.prev !== null) {
+                    transformItem(_current.prev.data, -_pageWidth + translate);
+                    transformItem(_current.data, translate);
+                }
+            }
+            //页面向右滑动
+            else if (translate < 0) {
+                if (_current.next !== null) {
+                    transformItem(_current.next.data, _pageWidth + translate);
+                    transformItem(_current.data, translate);
+                }
+            }
+            else {
+                if (_current.prev !== null) {
+                    transformItem(_current.prev.data, -_pageWidth + translate);
+                    transformItem(_current.data, translate);
+                }
+                if (_current.next !== null) {
+                    transformItem(_current.next.data, _pageWidth + translate);
+                    transformItem(_current.data, translate);
+                }
+            }
+        }
+
+        function moveTo(translate, isRollback) {
+            if (isRollback) {
+                transitionItems(_current, true);  //为当前元素添加过渡
+                positionItems();
+            } else {
+                var next = translate < 0 ? _current.next : _current.prev;
+                if (next !== null) {
+                    transitionItems(_current, true);  //为当前元素添加过渡
+
+                    _prev = _current;
+                    _current = next;
+
+                    zindexItems(_prev, _normalZIndex);
+                    zindexItems(_current, _activeZIndex);
+                    positionItems();
+
+                    if(typeof _itemChangedHandler === "function") {
+                        _itemChangedHandler(_prev.index, _current.index);
+                    }
+                }
+            }
+        }
+
+        function positionItems() {
+            if (_current.prev) {
+                transformItem(_current.prev.data, -_pageWidth);
+            }
+            if (_current.next) {
+                transformItem(_current.next.data, _pageWidth);
+            }
+            transformItem(_current.data, 0);
+        }
+
+        _carousel.bindTouchEvent = function() {
+            var startX,startY;
+            var isMove = false;     //是否发生左右滑动
+            var startT = 0;         //记录手指按下去的时间
+            var translate = 0;
+
+            /*手指按下时*/
+            _container.addEventListener("touchstart", function(e) {
+                // e.preventDefault();//取消此行代码的注释会在该元素内阻止页面纵向滚动
+                var touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                _container.style.webkitTransition = ""; //取消动画效果
+                startT = new Date().getTime();          //记录手指按下的开始时间
+                isMove = false;
+                transitionItems(_prev, false);             //取消之前元素的过渡
+                transitionItems(_current, false);          //取消当前元素的过渡
+            }, false);
+
+            /*手指在屏幕上滑动，页面跟随手指移动*/
+            _container.addEventListener("touchmove", function(e) {
+                // e.preventDefault();//取消此行代码的注释会在该元素内阻止页面纵向滚动
+                var touch = e.touches[0];
+                var deltaX = touch.clientX - startX;
+                var deltaY = touch.clientY - startY;
+                //如果X方向上的位移大于Y方向，则认为是左右滑动
+                if (Math.abs(deltaX) > Math.abs(deltaY)){
+                    translate = deltaX > _pageWidth ? _pageWidth : deltaX;
+                    translate = deltaX < -_pageWidth ? -_pageWidth : deltaX;
+                    moveItems(translate);
+                    isMove = true;
+                }
+            }, false);
+
+            /*手指离开屏幕时，计算最终需要停留在哪一页*/
+            _container.addEventListener("touchend", function(e) {
+                // e.preventDefault();//取消此行代码的注释会在该元素内阻止页面纵向滚动
+                //是否会滚
+                var isRollback = false;
+                //计算手指在屏幕上停留的时间
+                var deltaT = new Date().getTime() - startT;
+                if (isMove) { //发生了左右滑动
+                    //如果停留时间小于300ms,则认为是快速滑动，无论滑动距离是多少，都停留到下一页
+                    if (deltaT < 300) {
+                        translate = translate < 0 ? -_pageWidth : _pageWidth;
+                    } else {
+                        //如果滑动距离小于屏幕的50%，则退回到上一页
+                        if (Math.abs(translate) / _pageWidth < 0.5) {
+                            isRollback = true;
+                        } else {
+                            //如果滑动距离大于屏幕的50%，则滑动到下一页
+                            translate = translate < 0 ? -_pageWidth : _pageWidth;
+                        }
+                    }
+                    moveTo(translate, isRollback);
+                }
+            }, false);
+            return _carousel;
+        };
+
+        _carousel.next = function () {
+            transitionItems(_prev, false);
+            moveTo(-_pageWidth);
+        };
+
+        _carousel.moveTo = function(dstIndex) {
+          var offset = dstIndex - _current.index;
+          if (offset !== 0) {
+            var move = offset > 0 ? this.next : this.prev;
+            offset = Math.abs(offset);
+            while(offset > 0) {
+              move();
+              offset--;
+            }
+          }
+        };
+
+        _carousel.setItemChangedHandler = function(itemChangedHandler) {
+            _itemChangedHandler = itemChangedHandler;
+            return _carousel;
+        };
+        return _carousel;
+    }
+    var carousel = CreateCarousel("qqqcccCarousel", "qqqcccItem").bindTouchEvent().setItemChangedHandler(onPageChanged);
+    var dots = document.querySelectorAll(".qqqcccPageIndicator div");
+    var curDot = dots[0];
+    curDot.className = "active";
+    function onPageChanged(preIndex, curIndex) {
+      curDot.className = "";
+      curDot = dots[curIndex];
+      curDot.className = "active";
+    }
+
+    var timer;
+    function play() {
+        timer = setInterval(function () {
+          carousel.next();
+        }, 3000)
+    }
+
+    play();
+
+  </script>
+</body>
+</html>

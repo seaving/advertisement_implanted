@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
+    <title>修改密码</title>
+    <link rel="stylesheet" href="../css/third/bootstrap.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/dialog.css" />
+    <script src="../js/third/jquery-3.2.1.min.js"></script>
+    <script src="../js/third/layer/layer.js"></script>
+    <script src="../js/login.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/resetpwd.css" />
+</head>
+<body>
+    <script>
+        if (window != top) {
+            top.location.href = location.href;
+        }
+    </script>
+
+    <header>
+        <div class="text"></div>
+    </header>
+
+    <div class="container">
+        <img src="../img/jian.png" />
+        <h1>前辰无线WiFi服务</h1>
+        <div class="container container-form">
+            <form>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="password" id="oldPwd" class="form-control" name="originPwd" value="" required="required" placeholder="原密码" data-validate="required:请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="password" id="newPwd" class="form-control" name="newPwd" value="" required="required" placeholder="新密码" data-validate="required:请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="password" id="repeatNewPwd" class="form-control" name="repeatNewPwd" value="" required="required" placeholder="重复新密码" data-validate="required:请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!--距离上一个输入框40px-->
+                    <div class="col-sm-12 confirm-btn">
+                        <button type="button" class="btn btn-block" onclick="resetPwdRequest();">确认修改</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p><span>深圳前辰科技有限公司&nbsp|&nbsp</span><a href="http://www.qcwifi.ltd/rapp/index" target="_blank"><span>联系我们</span></a></p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+config interface 'lan'
+	option ifname 'eth0.2'
+....//其余lan相关的都改为eth0.2
+
+config interface 'wan'
+	option ifname 'eth0.1'
+...//其余wan相关的都改为eth0.1

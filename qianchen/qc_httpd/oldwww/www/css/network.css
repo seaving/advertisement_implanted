@@ -1,0 +1,44 @@
+.network-input-div {
+    /*margin-top: 20px;*/
+    margin-left: 100px;
+    /*background-color: #ce8483;*/
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    margin-top: 13px;
+}
+.device-content {
+    margin-left: 100px;
+    /*background-color: #ce8483;*/
+}
+.prompt-div {
+    /*background-color: #5cb85c;*/
+}
+.prompt {
+    /*margin: 70px 50px;*/
+    /*text-align: center;*/
+    /*background-color: #D3D4D3;*/
+}
+.prompt label {
+    text-align: left;
+}
+@media screen and (min-width: 900px) {
+    .prompt {
+        margin-top: 70px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .network-input-div {
+        margin-left: 0;
+    }
+    .device-content {
+        margin-left: 30px;
+    }
+    .prompt-div {
+        margin-left: 50px;
+        margin-top: 30px;
+    }
+}
+

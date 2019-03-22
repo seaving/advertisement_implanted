@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+
+	
+	<!-- 公共 script 部分 -->
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+	
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("network_set");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/network_set.png"> <strong>网络设置 >> 外网设置</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row">
+							<center>
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<div class="layui-row grid-demo radius">
+										<form class="layui-form" action="">
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>网络协议</strong></label>
+													<div class="layui-input-block p30">
+														<input type="radio" name="protocol" lay-filter="radio_protocol" value="dhcp" title="DHCP">
+														<input type="radio" name="protocol" lay-filter="radio_protocol" value="static" title="静态地址" checked>
+														<input type="radio" name="protocol" lay-filter="radio_protocol" value="pppoe" title="PPPOE">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>IP地址</strong> <strong class="colorR">*</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="ip" id="ip" required lay-verify="ip" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>子网掩码</strong> <strong class="colorR">*</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="mask" id="mask" required lay-verify="mask" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>网关</strong> <strong class="colorR">*</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="gateway" id="gateway" required lay-verify="gateway" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>首选 DNS</strong> <strong class="colorR">*</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="dns_first" id="dns_first" required lay-verify="dns_first" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>备选 DNS</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="dns_second" id="dns_second" lay-verify="dns_second" autocomplete="off" placeholder="可选填 - 默认自动获取" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>设置MTU</strong></label>
+													<div class="layui-input-block p30">
+														<input type="number" name="mtu" id="mtu" lay-verify="mtu" autocomplete="off" placeholder="可选填 只能填写数字 - 范围1~1500" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs10 layui-col-sm10 layui-col-md10">
+												<div class="layui-form-item">
+													<div class="layui-input-block p30">
+														<button class="layui-btn layui-btn-normal" lay-submit="network_submit" lay-filter="network_submit"> <strong>提交</strong></button>
+														<button type="reset" class="layui-btn layui-btn-primary"> <strong>重置</strong></button>
+													</div>
+												</div>
+											</div>
+										</form>
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<span style="color:red" id="tips"> </span>
+										</div>
+									</div>
+								</div>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script src="../script/network_set_wan.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+select_page("static");
+get_wan_info("static");
+</script>
+
+</body>
+</html>

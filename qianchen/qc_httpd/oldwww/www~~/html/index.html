@@ -1,0 +1,125 @@
+﻿<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/icon.png">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    
+	<!-- Custom styles for this template -->
+    <link href="../css/starter-template.css" rel="stylesheet">
+	
+	<link href="../css/nav_common.css" rel="stylesheet">
+    
+	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../js/ie-emulation-modes-warning.js"></script>
+
+</head>
+<body style="background-color: #EEEEEE" onload="request_system_loop()">
+	<div class="container" style="display:table;padding-top: 20px;">
+		<div class="row" style="display: table-cell;vertical-align: middle;">
+			<div class="col-xs-3" style="">
+				<div class="panel panel-primary" style="border-left:0px;border-top:0px;border-right:0px;border-bottom:1px">
+					<div class="panel-heading" style="background-color:#4285F4">
+						<h3 class="panel-title">店铺信息</h3>
+					</div>
+					<div class="panel-body">
+						<div class="starter-template">
+							<img src="../img/shop.svg" height="20%" width="40%" /><br><br>
+							<label id="shop_info">查询中...</label>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" style="border-left:0px;border-top:0px;border-right:0px;border-bottom:1px">
+					<div class="panel-heading" style="background-color:#4285F4">
+						<h3 class="panel-title">系统信息</h3>
+					</div>
+					<div class="panel-body">
+						<label class="label-default text-center" style="color:white;font-size:12;width:60px;"> 运行时长 </label>&nbsp;&nbsp;
+							<label id="run_time" class="text-center" style="font-size:12;">  </label><br>
+						<label class="label-default text-center" style="color:white;font-size:12;width:60px;"> 型号 </label>&nbsp;&nbsp;
+							<label id="module" class="text-center" style="font-size:12;"> </label><br>
+						<label class="label-default text-center" style="color:white;font-size:12;width:60px;"> 版本号  </label>&nbsp;&nbsp;
+							<label id="version" class="text-center" style="font-size:12;"> </label><br>
+					</div>
+				</div>
+				<div class="panel panel-primary" style="border-left:0px;border-top:0px;border-right:0px;border-bottom:1px">
+					<div class="panel-heading" style="background-color:#4285F4">
+						<h3 class="panel-title">联系我们</h3>
+					</div>
+					<div class="panel-body">
+						<label class="label-default text-center" style="color:white;font-size:12;width:60px;"> 联系电话 </label>&nbsp;&nbsp;
+							<label id="run_time" class="text-center" style="font-size:12;">18565676064</label><br>
+						<label class="label-default text-center" style="color:white;font-size:12;width:60px;"> 官网 </label>&nbsp;&nbsp;
+							<label id="module" class="text-center" style="font-size:12;"><a href="http://www.qcwifi.ltd" target="_blank">www.qcwifi.ltd</a></label><br>
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-xs-8" style="margin-left: 20px;">
+				<div class="panel panel-primary" style="border-left:0px;border-top:0px;border-right:0px;border-bottom:1px">
+					<div class="panel-heading" style="background-color:#4285F4">
+						<h3 class="panel-title">路由信息</h3>
+					</div>
+					<div class="panel-body">
+						<div class="panel-heading" id="route_state" style="background-color:#F2A04E;display:none;">
+							<label style="font-size:20;color:white">路由器状态异常<img src="../img/warn.svg" height="10%" width="10%" /></label><br>
+							<label id="error_info" style="font-size:15;color:white">出口对端设备未能正确分配DNS服务器地址!</label>
+						</div>
+						<hr>
+						<div class="panel-heading" style="">
+							<label id="wan_info" style="font-size:15;"><img src="../img/wan.svg" height="30px" width="10%" />&nbsp;&nbsp;外网信息</label>&nbsp;&nbsp;
+							<label style="font-size:12;">外网IP：<span style="font-size:15;color:#4285F4" id="wan_ip"></span><br>
+							DNS：<span style="font-size:15;color:#4285F4" id="dns"></span><br>
+							协议类型：<span style="font-size:15;color:#4285F4" id="proto"></span></label>&nbsp;&nbsp;
+						</div>
+						<hr>
+						<div class="panel-heading" style="">
+							<label id="device_info" style="font-size:15;"><img src="../img/route.svg" height="30px" width="10%" />&nbsp;&nbsp;设备信息</label>&nbsp;&nbsp;
+							<label style="font-size:12;">共 <span style="font-size:15;color:#4285F4" id="device_online_count" ></span> 台设备&nbsp;&nbsp;&nbsp;&nbsp;
+							<span style="font-size:15;color:#4285F4" id="device_offline_count"></span> 台离线 </label>&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;<label style=""><a href="#"><span style="font-size:12;">查看详情</span></a></label>
+						</div>
+						<hr>
+						<div class="panel-heading" style="">
+							<label id="wan_info" style="font-size:15;"><img src="../img/client.svg" height="30px" width="10%" />&nbsp;&nbsp;终端信息</label>&nbsp;&nbsp;
+							<label style="font-size:12;">共 <span style="font-size:15;color:#4285F4"  id="user_count" ></span> 个用户&nbsp;&nbsp;&nbsp;&nbsp;</label>&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="text-right"><a href="#"><span style="font-size:12;">查看详情</span></a></label>
+						</div>
+						<hr>
+						<div class="panel-heading" style="">
+							<label style="font-size:15;"><img src="../img/lan.svg" height="30px" width="10%" />&nbsp;&nbsp;内网信息</label>&nbsp;&nbsp;
+							<label style="font-size:12;">SSID：<span style="font-size:15;color:#4285F4" id="ssid"></span><br>
+							IP已分配：<span style="font-size:15;color:#4285F4" id="dhcp_list_cnt"></span><br>
+							DHCP池：<span style="font-size:15;color:#4285F4" id="pool_count"></span></label>&nbsp;&nbsp;
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- scripts -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+	<script src="../js/nav_common.js"></script>
+	<script src="../js/home.js"></script>
+</body>
+</html>

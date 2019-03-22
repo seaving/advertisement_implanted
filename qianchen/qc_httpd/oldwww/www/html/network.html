@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网络设置</title>
+
+    <link rel="stylesheet" href="../css/third/bootstrap.css" />
+    <link rel="stylesheet" href="../css/bootstrap-overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/index.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/network.css" type="text/css" media="screen" />
+
+</head>
+<body onload="redirect();">
+
+    <script src="../js/common.js"></script>
+
+    <!--header navbar-->
+    <header id="nav" class="navbar navbar-inverse" role="banner"></header>
+    <!--end header navbar-->
+
+    <!--left side navbar-->
+    <div id="sidebar-nav"></div>
+    <!--end left side navbar-->
+
+    <!-- main container -->
+    <div class="content">
+        <!--start 网络设置-->
+        <div class="col-xs-12 common-header-title">
+            <h1>网络设置</h1>
+            <div class="col-md-5 col-xs-12 network-input-div">
+                <form id="network-form" onsubmit="return checkInput();">
+                    <div class="form-group">
+                        <label class="col-md-4 col-xs-3 control-label" style="padding-right: 0;">WAN口连接类型:</label>
+                        <div class="col-md-8 col-xs-9">
+                            <select id="proto" class="form-control" onchange="selectProto(this.value);">
+                                <option value="dhcp">动态IP</option>
+                                <option value="pppoe">PPPoE(宽带拨号)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="network-input" style="display:none">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" style="padding-right: 0;">上网账号:</label>
+                            <div class="col-xs-9">
+                                <input id="username" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" style="padding-right: 0;">上网口令:</label>
+                            <div class="col-xs-9">
+                                <input id="password" type="password" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <!--提交按钮-->
+                    <div class="form-group">
+                        <div class="confirm-btn">
+                            <button type="button" class="btn btn-block" onclick="submitNetworkSetEvent();">提 交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--end 网络设置-->
+
+        <!--start 分割线-->
+        <div class="col-xs-12 qc-line"></div>
+        <!--end 分割线-->
+
+        <!--start 设备网络信息-->
+        <div class="col-xs-12 common-header-title">
+            <h1>设备网络信息</h1>
+            <div class="device-content col-lg-5 col-md-7 col-sm-5 col-xs-12">
+                <div class="row info-content-row">
+                    <label class="col-md-4 col-sm-3 col-xs-5 span-prompt common-font">当前WAN口连接类型:</label>
+                    <label class="col-md-8 col-sm-9 col-xs-7 span-content" id="used_proto"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-4 col-sm-3 col-xs-5 span-prompt common-font">IP地址:</label>
+                    <label class="col-md-8 col-sm-9 col-xs-7 span-content" id="ipaddr"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-4 col-sm-3 col-xs-5 span-prompt common-font">子网掩码:</label>
+                    <label class="col-md-8 col-sm-9 col-xs-7 span-content" id="mask"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-4 col-sm-3 col-xs-5 span-prompt common-font">网关:</label>
+                    <label class="col-md-8 col-sm-9 col-xs-7 span-content" id="gateway"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-4 col-sm-3 col-xs-5 span-prompt common-font">首选DNS服务器:</label>
+                    <label class="col-md-8 col-sm-9 col-xs-7 span-content" id="dns_first"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-4 col-sm-3 col-xs-5 span-prompt common-font">备用DNS服务器:</label>
+                    <label class="col-md-8 col-sm-9 col-xs-7 span-content" id="dns_second"></label>
+                </div>
+            </div>
+            <div class="prompt-div col-lg-5 col-md-3 col-sm-5 col-xs-12">
+                <div class="prompt">
+                    <label class="common-font">若未获取到网络信息，请您确认:</label><br>
+                    <label class="common-font">1. 网线是否连接正确</label><br>
+                    <label class="common-font">2. WAN口出去的网络链路是否正常</label><br>
+                    <label class="common-font">3. 是否选择正确的WAN口连接类型</label><br>
+                </div>
+            </div>
+        </div>
+        <!--end 设备网络信息-->
+    </div>
+    <!--end main container-->
+
+    <!-- scripts -->
+    <script src="../js/third/jquery-3.2.1.min.js"></script>
+    <script src="../js/third/bootstrap.min.js"></script>
+    <script src="../js/third/jquery.knob.js"></script>
+    <script src="../js/third/layer/layer.js"></script>
+    <script src="../js/network.js"></script>
+    <script src="../js/third/theme.js"></script>
+    <script>
+        $("#proto").get(0).selectedIndex = -1;
+    </script>
+
+</body>
+</html>

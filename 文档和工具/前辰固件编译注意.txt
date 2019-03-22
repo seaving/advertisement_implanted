@@ -1,0 +1,19 @@
+编译前辰固件需要：
+1. make menuconfig
+添加 SSL->libopenssl->ec2m suport
+添加 libevent2 libevent_openssl
+
+问题一：
+编译过程中会出现：
+Package base-files is missing dependencies for the following libraries:
+libevent-2.1.so.6
+libevent-openssl.so
+libssl...so等相关问题
+解决方式：
+1. 需要把apfree_wifidog编译打开，因为上面的库都是由apfree_wifidog来生成的
+打开方式： make menuconfig -> NETWORK -> captive ... ->apfree_wifidog
+2.编译完成后还会出现这个问题，此时需要把/home/seaving/ar9344_OpenWrt/openwrt/staging_dir/（路由方案文件夹 eg.target-mipsel_24kec+dsp_musl-1.1.14）/usr/lib下的上述缺失库拷贝到/home/seaving/ar9344_OpenWrt/openwrt/package/base-files/files/lib目录下
+3. 按照步骤1把apfree_wifidog选项关闭
+4. 再次make V=s
+注意： 如果切换到其他方案编译，需要重复上述动作，因为base-files目录下的库是用上一次的交叉编译工具编译的
+

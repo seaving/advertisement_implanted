@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools_chain>
+ <supports>
+  <support property="cpu">
+   <value>ARM926T</value>
+   <value>ARM920T</value>
+   <value>ARM9TDMI</value>
+   <value>XScale</value>
+   <value>ARM946E-S</value>
+   <value>ARM1136</value>
+  </support>
+  <support property="version">
+   <value>ZTE CGELV3.0</value>
+   <value>ZTE CGELV3.0-KTH</value>
+   <value>linux-2.6.*</value>
+  </support>
+ </supports>
+ <tools state="state_kernel" exterName="CrossChain(GCC 4.1.2, ULIBC 0.9.30 EABI)" cross_compile_prefix="arm-linux-uclibc-">
+  <command />
+  <!-- command
+        as="as"
+        cc="gcc"
+        cpp="g++"
+        ld="ld"
+        ar="ar"
+        nm="nm"
+        strip="trip"
+        objcopy="objcopy"
+        objdump="objdump">
+      -->
+  <params />
+ </tools>
+ <tools state="state_user" exterName="CrossChain(GCC 4.1.2, ULIBC 0.9.30 EABI)" cross_compile_prefix="arm-linux-uclibc-">
+  <command ld="gcc" />
+  <params />
+ </tools>
+</tools_chain>
+

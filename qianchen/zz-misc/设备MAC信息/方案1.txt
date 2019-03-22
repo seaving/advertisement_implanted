@@ -1,0 +1,109 @@
+通过iw命令获取连接到路由器上的设备MAC地址:
+使用iw可以获取到连接到路由器上所有设备的MAC地址
+
+通过该方法，可以知道每个MAC地址是与哪个无线网卡相连的（即区分ssid）
+
+root@OpenWrt:~# iw dev wlan0 station dump  
+Station e0:ac:cb:b1:ca:ba (on wlan0)  
+        inactive time:  27010 ms  
+        rx bytes:       198087  
+        rx packets:     1417  
+        tx bytes:       843928  
+        tx packets:     969  
+        tx retries:     66  
+        tx failed:      4  
+        signal:         -70 dBm  
+        signal avg:     -70 dBm  
+        tx bitrate:     72.2 MBit/s MCS 7 short GI  
+        rx bitrate:     24.0 MBit/s  
+        expected throughput:    34.84Mbps  
+        authorized:     yes  
+        authenticated:  yes  
+        preamble:       short  
+        WMM/WME:        yes  
+        MFP:            no  
+        TDLS peer:      no  
+Station 04:52:f3:87:cf:77 (on wlan0)  
+        inactive time:  620 ms  
+        rx bytes:       316840  
+        rx packets:     3260  
+        tx bytes:       419569  
+        tx packets:     1576  
+        tx retries:     91  
+        tx failed:      0  
+        signal:         -78 dBm  
+        signal avg:     -79 dBm  
+        tx bitrate:     144.4 MBit/s MCS 15 short GI  
+        rx bitrate:     24.0 MBit/s  
+        expected throughput:    43.20Mbps  
+        authorized:     yes  
+        authenticated:  yes  
+        preamble:       short  
+        WMM/WME:        yes  
+        MFP:            no  
+        TDLS peer:      no  
+Station 94:94:26:9f:cc:fa (on wlan0)  
+        inactive time:  25760 ms  
+        rx bytes:       19497  
+        rx packets:     312  
+        tx bytes:       28507  
+        tx packets:     137  
+        tx retries:     1  
+        tx failed:      0  
+        signal:         -72 dBm  
+        signal avg:     -71 dBm  
+        tx bitrate:     57.8 MBit/s MCS 5 short GI  
+        rx bitrate:     24.0 MBit/s  
+        expected throughput:    30.29Mbps  
+        authorized:     yes  
+        authenticated:  yes  
+        preamble:       short  
+        WMM/WME:        yes  
+        MFP:            no  
+        TDLS peer:      no  
+Station b0:d5:9d:61:3a:1a (on wlan0)  
+        inactive time:  280 ms  
+        rx bytes:       92157  
+        rx packets:     919  
+        tx bytes:       73302  
+        tx packets:     615  
+        tx retries:     457  
+        tx failed:      78  
+        signal:         -84 dBm  
+        signal avg:     -87 dBm  
+        tx bitrate:     39.0 MBit/s MCS 4  
+        rx bitrate:     58.5 MBit/s MCS 6  
+        expected throughput:    23.180Mbps  
+        authorized:     yes  
+        authenticated:  yes  
+        preamble:       short  
+        WMM/WME:        yes  
+        MFP:            no  
+        TDLS peer:      no  
+Station a8:1b:5a:b7:e0:03 (on wlan0)  
+        inactive time:  10750 ms  
+        rx bytes:       106382  
+        rx packets:     679  
+        tx bytes:       97932  
+        tx packets:     300  
+        tx retries:     20  
+        tx failed:      2  
+        signal:         -54 dBm  
+        signal avg:     -57 dBm  
+        tx bitrate:     65.0 MBit/s MCS 7  
+        rx bitrate:     6.0 MBit/s  
+        expected throughput:    32.125Mbps  
+        authorized:     yes  
+        authenticated:  yes  
+        preamble:       short  
+        WMM/WME:        yes  
+        MFP:            no  
+        TDLS peer:      no  
+
+如果只要MAC地址，可以过滤一下
+iw dev wlan0 station dump | grep Station  
+Station e0:ac:cb:b1:ca:ba (on wlan0)  
+Station 04:52:f3:87:cf:77 (on wlan0)  
+Station 94:94:26:9f:cc:fa (on wlan0)  
+Station b0:d5:9d:61:3a:1a (on wlan0)  
+Station a8:1b:5a:b7:e0:03 (on wlan0)  

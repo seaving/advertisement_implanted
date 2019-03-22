@@ -1,0 +1,2 @@
+---- 24 Matches (1 in 1 files) ----
+Fw.c (e:\work\share\route_pri\project\rp\qianchen\fw_set\src):				return __ip0 << 24 | __ip1 << 16 | __ip2 << 8 | __ip3 << 0;

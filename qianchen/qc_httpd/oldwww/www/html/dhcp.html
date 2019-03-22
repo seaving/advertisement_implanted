@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>DHCP服务</title>
+
+	<link rel="stylesheet" href="../css/third/bootstrap.css" />
+	<link rel="stylesheet" href="../css/bootstrap-overrides.css" type="text/css" />
+	<link rel="stylesheet" href="../css/layout.css" type="text/css" />
+	<link href="../css/third/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/dhcp.css" />
+
+</head>
+
+<body onload="request_dhcp_list_loop();">
+
+	<script src="../js/common.js"></script>
+
+	<!--header navbar-->
+	<header id="nav" class="navbar navbar-inverse" role="banner"></header>
+	<!--end header navbar-->
+
+	<!--left side navbar-->
+	<div id="sidebar-nav"></div>
+	<!--end left side navbar-->
+
+	<!-- main container -->
+	<div class="content">
+		<!--start DHCP设置-->
+		<div class="col-xs-12 common-header-title">
+			<h1>DHCP设置</h1>
+			<div class="col-md-5 col-xs-12 dhcp-input-div">
+				<form method="post" action="dhcp.html?api=set_dhcp_info" onsubmit="return checkInput()">
+					<div class="form-group">
+						<label class="col-xs-3 control-label">网关:</label>
+						<div class="col-xs-9">
+							<input type="text" id="gateway" class="form-control" placeholder="x.x.x.x" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">子网掩码:</label>
+						<div class="col-xs-9">
+							<input type="text" id="mask" class="form-control" placeholder="x.x.x.x" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label">IP池:</label>
+						<div class="col-xs-3">
+							<input type="text" id="ip_pool_min" class="form-control"  placeholder="1" >
+						</div>
+						<label class="col-xs-1 control-label" style="padding: 0;text-align: center;width: auto">-</label>
+						<div class="col-xs-3">
+							<input type="text" id="ip_pool_max" class="form-control" placeholder="255" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label">租期:</label>
+						<div class="col-xs-3">
+							<input type="text" id="leasetime" class="form-control" placeholder="1" style="margin-bottom: 30px">
+						</div>
+						<label class="col-xs-3 control-label" style="padding: 0;text-align: center;width: auto">小时</label>
+					</div>
+					<div class="form-group">
+						<div class="confirm-btn">
+							<button class="btn btn-block" type="button" onclick="submit_dhcp_set();">提 交</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--end DHCP设置-->
+
+		<!--start 分割线-->
+		<div class="col-xs-12 qc-line"></div>
+		<!--end 分割线-->
+
+		<!--start DHCP客户端列表-->
+		<div class="col-xs-12 common-header-title">
+			<h1>DHCP客户端列表</h1>
+			<table id="dhcpList" class="table table-striped table-bordered">
+				<thead>
+					<tr class="aaa">
+						<th data-field="Code">主机名</th>
+						<th data-field="TuanGouName">上线时间</th>
+						<th data-field="StartDate">IP地址</th>
+						<th data-field="EndTime">Mac地址</th>
+					</tr>
+				</thead>
+				<tbody id="dhcpListBody">
+				</tbody>
+			</table>
+			<div id="buttons" class="btn-group pull-right" role="group" aria-label="...">
+				<button id="previous" type="button" class="btn btn-default" onclick="previousEvent();">上一页</button>
+				<button id="next" type="button" class="btn btn-default" onclick="nextEvent();">下一页</button>
+			</div>
+			<label id="listprompt" class="control-label common-font" style="padding-right: 0;"></label>
+		</div>
+		<!--end DHCP客户端列表-->
+
+	</div>
+	<!--end main container-->
+
+	<!-- scripts -->
+	<script src="../js/third/jquery-3.2.1.min.js"></script>
+	<script src="../js/third/bootstrap.min.js"></script>
+  	<script src="../js/third/jquery.knob.js"></script>
+	<script src="../js/third/jquery.dataTables.min.js"></script>
+	<script src="../js/third/layer/layer.js"></script>
+	<script src="../js/dhcp.js"></script>
+	<script src="../js/third/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OpenSSL-libcrypto
+Description: OpenSSL cryptography library
+Version: 1.0.2h
+Requires: 
+Libs: -L${libdir} -lcrypto
+Libs.private: -L/home/seaving/ar9344_OpenWrt/openwrt/staging_dir/target-mipsel_24kec+dsp_musl-1.1.14/usr/lib -L/home/seaving/ar9344_OpenWrt/openwrt/staging_dir/target-mipsel_24kec+dsp_musl-1.1.14/lib -L/home/seaving/ar9344_OpenWrt/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-5.3.0_musl-1.1.14/usr/lib -L/home/seaving/ar9344_OpenWrt/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-5.3.0_musl-1.1.14/lib -ldl -ldl
+Cflags: -I${includedir} 

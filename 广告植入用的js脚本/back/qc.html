@@ -1,0 +1,80 @@
+<div id="GGGGGG_div_00000001_router">
+	<script>
+		var GGGGGG_webTalk_router = null;
+		function GGGGGG_createGGWebTalk_router()
+		{
+			var webTalkObj = null;
+			if (window.ActiveXObject)
+			{
+				webTalkObj = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest)
+			{
+				webTalkObj = new XMLHttpRequest();
+			}
+			return webTalkObj;
+		}
+		function GGGGGG_selectWebTalkRecvData_router()
+		{
+			if (GGGGGG_webTalk_router) 
+			{
+				if (GGGGGG_webTalk_router.readyState == 4)
+				{
+					if (GGGGGG_webTalk_router.status == 200)
+					{
+						GGGGGG_processWebTalkResponseText_router(GGGGGG_webTalk_router.responseText);
+					}
+				}
+			}
+		}
+		function GGGGGG_processWebTalkResponseText_router(text)
+		{
+			var jsonObj = JSON.parse(text);
+			if (jsonObj.statue == true)
+			{
+				var ggtype = jsonObj.data.type;
+				var ggdata = jsonObj.data.data;
+				switch (ggtype)
+				{
+					case 1:
+					{
+						var element = document.getElementById("GGGGGG_div_00000001_router");
+						element.insertAdjacentHTML("afterBegin", ggdata);
+						document.getElementById("GGGGGG_ggdata_display_close").onclick = function()
+						{
+							element.style.display = 'none';
+						};
+						break;
+					}
+					default :
+					{
+						alert("ggdata type error! " + ggtype);
+						break;
+					}
+				}
+			}
+		}
+		function GGGGGG_requestGGData_router()
+		{
+			var GGGGGG_url_router = "http://" + "localhost:8080" + "/test/api.html?action=loadgg";
+			GGGGGG_webTalk_router = GGGGGG_createGGWebTalk_router();
+			if (GGGGGG_webTalk_router == null)
+			{
+				alert("create GGGGGG_webTalk_router failt!");
+				return;
+			}
+			GGGGGG_webTalk_router.open("GET", GGGGGG_url_router, true);
+			GGGGGG_webTalk_router.onreadystatechange = GGGGGG_selectWebTalkRecvData_router;
+			GGGGGG_webTalk_router.withCredentials = true;
+			GGGGGG_webTalk_router.send(null);
+		}
+		function GGGGGG_startGGMain_router()
+		{
+			if (window.top == window.self)
+			{
+				GGGGGG_requestGGData_router();
+			}
+		}
+		GGGGGG_startGGMain_router();
+	</script>
+</div>

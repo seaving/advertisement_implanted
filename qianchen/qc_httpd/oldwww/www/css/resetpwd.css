@@ -1,0 +1,18 @@
+.col-sm-12 {
+    /*margin-bottom: 15px;*/
+}
+.confirm-btn {
+    margin-top: 25px;
+}
+.confirm-btn  {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*下面只是调试布局的时候用的*/
+/*.container-form {*/
+    /*background-color: #8a6d3b;*/
+/*}*/
+/*.form-group {*/
+    /*background-color: #00aa00;*/
+/*}*/

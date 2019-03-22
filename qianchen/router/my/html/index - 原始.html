@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<div class="layui-header header header-demo">
+		<div class="layui-main">
+			<a class="logo" href="/">
+				<img src="../img/logodemo.png" alt="layui">
+			</a>
+		
+			<ul class="layui-nav">
+				<li class="layui-nav-item">
+					<a href="">
+						<i class="layui-icon nav_icon layui-hide-xs"><img src="../img/bond.png"></i>
+						<span class="font-color-white font-size-15px"> 设备绑定<span>
+					</a>
+				</li>
+				
+				<li class="layui-nav-item">
+					<a href="">
+						<i class="layui-icon nav_icon layui-hide-xs"><img src="../img/msg.png"></i>
+						消息<span class="layui-badge" id="msg_count">99+</span>
+					</a>
+				</li>
+				
+				<li class="layui-nav-item layui-this">
+					<a href="javascript:;">
+						<i class="layui-icon nav_icon layui-hide-xs"><img src="../img/user.png"></i>
+						帐户
+					</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="">
+								<i class="layui-icon"><img src="../img/passwd.png"></i> 修改密码
+							</a>
+						</dd>
+						<dd>
+							<a href="">
+								<i class="layui-icon"><img src="../img/logout.png"></i> 退出
+							</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="layui-side layui-bg-black">
+		<div class="layui-side-scroll">
+			<ul class="layui-nav layui-nav-tree site-demo-nav">
+				<li class="layui-nav-item layui-nav-itemed">
+					<a class="" href="">首页</a>
+				</li>
+
+				<li class="layui-nav-item layui-nav-itemed">
+					<a class="" href="javascript:;">网络设置</a>
+					<dl class="layui-nav-child">
+						<dd><a href="javascript:;">外网设置</a></dd>
+						<dd><a href="javascript:;">内网设置</a></dd>
+						<dd><a href="javascript:;">无线设置</a></dd>
+						<dd><a href="javascript:;">QoS智能限速</a></dd>
+					</dl>
+				</li>
+
+				<li class="layui-nav-item layui-nav-itemed">
+					<a class="" href="javascript:;">高级设置</a>
+					<dl class="layui-nav-child">
+						<dd><a href="">设备管理</a></dd>
+						<dd><a href="">免认证设置</a></dd>
+						<dd><a href="">AC设置</a></dd>
+						<dd><a href="">端口转发</a></dd>
+						<dd><a href="">第三方认证</a></dd>
+					</dl>
+				</li>
+
+				<li class="layui-nav-item layui-nav-itemed">
+					<a class="" href="">系统设置</a>
+				</li>
+
+				<li class="layui-nav-item layui-nav-itemed">
+					<a class="" href="">故障管理</a>
+				</li>
+				
+				<li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this">预览</li>
+			<li>查看代码</li>
+			<li>帮助</li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<div id="LAY_preview">
+						<div class="layui-container">
+							<blockquote class="layui-elem-quote">注意：下述演示中的颜色只是做一个区分作用，并非栅格内置。</blockquote>
+	   
+							<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+								<legend>始终等比例水平排列</legend>
+							</fieldset>
+	   
+							<div class="layui-row">
+								<div class="layui-col-xs6">
+									<div class="grid-demo grid-demo-bg1">6/12</div>
+								</div>
+								<div class="layui-col-xs6">
+									<div class="grid-demo">6/12</div>
+								</div>
+							</div>
+							<div class="layui-row">
+								<div class="layui-col-xs3">
+									<div class="grid-demo grid-demo-bg1">3/12</div>
+								</div>
+								<div class="layui-col-xs3">
+									<div class="grid-demo">3/12</div>
+								</div>
+								<div class="layui-col-xs3">
+									<div class="grid-demo grid-demo-bg1">3/12</div>
+								</div>
+								<div class="layui-col-xs3">
+									<div class="grid-demo">3/12</div>
+								</div>
+							</div>
+	 
+							<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+								<legend>移动设备、桌面端的组合响应式展现</legend>
+							</fieldset>
+	   
+							<div class="layui-row">
+								<div class="layui-col-xs12 layui-col-md8">
+									<div class="grid-demo grid-demo-bg1">移动：12/12、桌面：8/12</div>
+								</div>
+								<div class="layui-col-xs6 layui-col-md4">
+									<div class="grid-demo">移动：6/12、桌面：4/12</div>
+								</div>
+								<div class="layui-col-xs6 layui-col-md12">
+									<div class="grid-demo grid-demo-bg2">移动：6/12、桌面：12/12</div>
+								</div>
+							</div>
+	   
+							<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+								<legend>移动设备、平板、桌面端的复杂组合响应式展现</legend>
+							</fieldset>
+	   
+							<div class="layui-row">
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+									<div class="grid-demo grid-demo-bg1">移动：6/12 | 平板：6/12 | 桌面：4/12</div>
+								</div>
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+									<div class="grid-demo layui-bg-red">移动：6/12 | 平板：6/12 | 桌面：4/12</div>
+								</div>
+								<div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+									<div class="grid-demo layui-bg-blue">移动：4/12 | 平板：12/12 | 桌面：4/12</div>
+								</div>
+								<div class="layui-col-xs4 layui-col-sm7 layui-col-md8">
+									<div class="grid-demo layui-bg-green">移动：4/12 | 平板：7/12 | 桌面：8/12</div>
+								</div>
+								<div class="layui-col-xs4 layui-col-sm5 layui-col-md4">
+									<div class="grid-demo layui-bg-black">移动：4/12 | 平板：5/12 | 桌面：4/12</div>
+								</div>
+							</div>
+	   
+							<fieldset class="layui-elem-field layui-field-title"  style="margin-top: 50px;">
+								<legend>常规布局：从小屏幕堆叠到桌面水平排列</legend>
+							</fieldset>
+	   
+							<div class="layui-row">
+								<div class="layui-col-md1">
+									<div class="grid-demo grid-demo-bg1">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo grid-demo-bg1">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo grid-demo-bg1">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo grid-demo-bg1">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo grid-demo-bg1">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo grid-demo-bg1">1/12</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">1/12</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row">
+								<div class="layui-col-md9">
+									<div class="grid-demo grid-demo-bg1">75%</div>
+								</div>
+								<div class="layui-col-md3">
+									<div class="grid-demo">25%</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row">
+								<div class="layui-col-md4">
+									<div class="grid-demo grid-demo-bg1">33.33%</div>
+								</div>
+								<div class="layui-col-md4">
+									<div class="grid-demo">33.33%</div>
+								</div>
+								<div class="layui-col-md4">
+									<div class="grid-demo grid-demo-bg1">33.33%</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row">
+								<div class="layui-col-md6">
+									<div class="grid-demo grid-demo-bg1">50%</div>
+								</div>
+								<div class="layui-col-md6">
+									<div class="grid-demo">50%</div>
+								</div>
+							</div>
+	   
+							<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+								<legend>列间隔</legend>
+							</fieldset>
+	   
+							<div class="layui-row layui-col-space1">
+								<div class="layui-col-md3">
+									<div class="grid-demo grid-demo-bg1">1/4</div>
+								</div>
+								<div class="layui-col-md3">
+									<div class="grid-demo">1/4</div>
+								</div>
+								<div class="layui-col-md3">
+									<div class="grid-demo grid-demo-bg1">1/4</div>
+								</div>
+								<div class="layui-col-md3">
+									<div class="grid-demo">1/4</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row layui-col-space5">
+								<div class="layui-col-md4">
+									<div class="grid-demo grid-demo-bg1">1/3</div>
+								</div>
+								<div class="layui-col-md4">
+									<div class="grid-demo">1/3</div>
+								</div>
+								<div class="layui-col-md4">
+									<div class="grid-demo grid-demo-bg1">1/3</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row layui-col-space10">
+								<div class="layui-col-md9">
+									<div class="grid-demo grid-demo-bg1">9/12</div>
+								</div>
+								<div class="layui-col-md3">
+									<div class="grid-demo">3/12</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row layui-col-space15">
+								<div class="layui-col-md7">
+									<div class="grid-demo grid-demo-bg1">7/12</div>
+								</div>
+								<div class="layui-col-md5">
+									<div class="grid-demo">5/12</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row layui-col-space30">
+								<div class="layui-col-md7">
+									<div class="grid-demo grid-demo-bg1">7/12</div>
+								</div>
+								<div class="layui-col-md5">
+									<div class="grid-demo">5/12</div>
+								</div>
+							</div>
+	   
+							<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+								<legend>列偏移</legend>
+							</fieldset> 
+	   
+							<div class="layui-row">
+								<div class="layui-col-md4">
+									<div class="grid-demo grid-demo-bg1">4/12</div>
+								</div>
+								<div class="layui-col-md4 layui-col-md-offset4">
+									<div class="grid-demo">偏移4列</div>
+								</div>
+								<div class="layui-col-md1 layui-col-md-offset5">
+									<div class="grid-demo grid-demo-bg1">偏移5列</div>
+								</div>
+								<div class="layui-col-md1">
+									<div class="grid-demo">不偏移</div>
+								</div>
+							</div>
+	   
+							<div class="layui-row">
+								<div class="layui-col-md3 layui-col-md-offset3">
+									<div class="grid-demo grid-demo-bg1">偏移3列</div>
+								</div>
+								<div class="layui-col-md3 layui-col-md-offset1">
+									<div class="grid-demo">偏移1列</div>
+								</div>
+							</div>
+	   
+							<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+								<legend>栅格嵌套</legend>
+							</fieldset> 
+
+							<div class="layui-row">
+								<div class="layui-col-md5">
+									<div class="layui-row grid-demo">
+										<div class="layui-col-md3">
+											<div class="grid-demo grid-demo-bg1">内部列</div>
+										</div>
+										<div class="layui-col-md9">
+											<div class="grid-demo grid-demo-bg2">内部列</div>
+										</div>
+										<div class="layui-col-md12">
+											<div class="grid-demo grid-demo-bg3">内部列</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-md7">
+									<div class="layui-row grid-demo grid-demo-bg1">
+										<div class="layui-col-md12">
+											<div class="grid-demo">内部列</div>
+										</div>
+										<div class="layui-col-md9">
+											<div class="grid-demo grid-demo-bg2">内部列</div>
+										</div>
+										<div class="layui-col-md3">
+											<div class="grid-demo grid-demo-bg3">内部列</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="layui-fluid">
+							<fieldset class="layui-elem-field layui-field-title">
+								<legend>流体容器（宽度自适应，不固定）</legend>
+							</fieldset>
+							<div class="layui-row">
+								<div class="layui-col-sm3">
+									<div class="grid-demo grid-demo-bg1">25%</div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="grid-demo">25%</div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="grid-demo grid-demo-bg1">25%</div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="grid-demo">25%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<div class="layui-footer footer footer-demo">
+		<div class="layui-main">
+			<!-- 底部固定区域 -->
+			<center>深圳市前辰科技有限公司</center>
+		</div>
+	</div>
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../layui/jquery.js" charset="utf-8"></script>
+<script src="../layui/global.js" charset="utf-8"></script>
+<script src="../script/message.js" charset="utf-8"></script>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<script src="../layui/html5.min.js"  charset="utf-8"></script>
+<script src="../layui/respond.min.js"  charset="utf-8"></script>
+
+</body>
+</html>

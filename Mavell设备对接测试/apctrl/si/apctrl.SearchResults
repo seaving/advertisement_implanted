@@ -1,0 +1,29 @@
+---- printf Matches (28 in 4 files) ----
+Debug.h (e:\work\share\route_pri\project\apctrl\src):/* printf colour */
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf(first); \
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" COLOR_NONE_C "[%s][%s]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" COLOR_RED "[%s][%s][Error]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf(COLOR_NONE_C);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" COLOR_RED "[%s][%s][perror]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(COLOR_RED first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(COLOR_RED " errno = %d: %s\n", errno, strerror(errno));\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf(COLOR_NONE_C);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" COLOR_YELLOW "[%s][%s][Warn]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf(COLOR_NONE_C);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" COLOR_GREEN "[%s][%s][HL]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf(COLOR_NONE_C);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" color "[%s][%s][HL]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf(COLOR_NONE_C);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf("[PID:%d]" COLOR_NONE_C "[%s][%s]:%d ", getpid(), MODULE_NAME, __FUNCTION__, __LINE__);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    printf(first);\
+Debug.h (e:\work\share\route_pri\project\apctrl\src):    	printf("%02X ", pbyData[i]); \
+Debug.h (e:\work\share\route_pri\project\apctrl\src):	printf("\n");\
+Dup_file.h (e:\work\share\route_pri\project\apctrl\src):	printf("[%d%d%d%d%d%d%d%d%d%d%d%d]", year/10, year%10, mon/10, mon%10, \
+Dup_file.h (e:\work\share\route_pri\project\apctrl\src):	printf(first); \
+Netdev.c (e:\work\share\route_pri\project\apctrl\src):			printf("[ %s ] getaddrinfo timeout !\n", hostname);
+Time.c (e:\work\share\route_pri\project\apctrl\src):    //printf("Local   time   is   %s/n",asctime(timenow));

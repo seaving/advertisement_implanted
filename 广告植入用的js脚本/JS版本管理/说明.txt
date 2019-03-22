@@ -1,0 +1,2 @@
+qc-插入到head增加了全局once判断.html：
+目前最新

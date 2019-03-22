@@ -1,0 +1,15 @@
+In file included from /mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/src/common.h:58:0,
+                 from /mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/src/includes.h:6,
+                 from /mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/src/socket.c:1:
+/home/seaving/work/router_firmware/openwrt/staging_dir/toolchain-mipsel_24kc_gcc-7.3.0_musl/include/sys/sysinfo.h:10:8: error: redefinition of 'struct sysinfo'
+ struct sysinfo {
+        ^~~~~~~
+In file included from /home/seaving/work/router_firmware/openwrt/staging_dir/toolchain-mipsel_24kc_gcc-7.3.0_musl/include/linux/kernel.h:4:0,
+                 from /home/seaving/work/router_firmware/openwrt/staging_dir/toolchain-mipsel_24kc_gcc-7.3.0_musl/include/linux/netlink.h:4,
+                 from /mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/src/common.h:15,
+                 from /mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/src/includes.h:6,
+                 from /mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/src/socket.c:1:
+/home/seaving/work/router_firmware/openwrt/staging_dir/toolchain-mipsel_24kc_gcc-7.3.0_musl/include/linux/sysinfo.h:7:8: note: originally defined here
+ struct sysinfo {
+        ^~~~~~~
+make: *** [/mnt/hgfs/share/route_pri/project/rp/qianchen/pcap/obj/socket.o] Error 1

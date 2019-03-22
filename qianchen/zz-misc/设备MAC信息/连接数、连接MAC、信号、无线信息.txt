@@ -1,0 +1,10 @@
+
+OpenWRT查看wifi用户连接数
+ 
+root@OpenWrt:~#  iw dev wlan0 station dump |grep Station |wc -l  #wifi连接人数
+ 
+root@OpenWrt:~#  iw dev wlan0 station dump |grep Station |awk -F ' ' ' {print $2}' #连接的用户MAC
+ 
+root@OpenWrt:~#  iw dev wlan0 station dump  #连接用户的信号强弱
+ 
+root@OpenWrt:~#  iw wlan0 info #查看wifi信息

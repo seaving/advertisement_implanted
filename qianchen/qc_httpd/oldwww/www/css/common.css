@@ -1,0 +1,55 @@
+
+/*输入框*/
+.form-control {
+    height:40px;
+}
+/*输入框*/
+.form-group input {
+    font-size: 13px;
+}
+/*表单内的label*/
+.form-group label {
+    font: 200 13px/13px "黑体";
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    margin-top: 13px;
+}
+.form-control{
+    margin-bottom: 15px;
+}
+/*提交按钮*/
+.confirm-btn {
+    margin-left:20%;
+    margin-right:20%;
+}
+.confirm-btn button {
+    font-size: 15px;
+    background: #27a9e3;
+    color: #f4f2f2;
+    border: 0;
+    height:40px;
+}
+.common-font {
+    font: 200 13px/13px "黑体";
+    /*font-family: 'Open Sans', sans-serif;*/
+}
+.qc-line {
+    border-top: 1px solid #edeff1;
+    margin-top: 30px;
+    /*padding-top: 20px;*/
+    box-shadow: inset 0px 3px 4px -1px #fafafa;
+}
+
+.common-header-title {
+    width: 100%;
+    height: 100%;
+}
+.common-header-title h1 {
+    color:#444;
+    font: 200 18px/80px "Open Sans";
+    margin-left: 20px;
+    font-weight: 400;
+}

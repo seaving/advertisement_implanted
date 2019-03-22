@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+	
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/network_set.png"> <strong>网络设置 >> 内网设置</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row">
+							<center>
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<div class="layui-row grid-demo radius">
+										<form class="layui-form" action="">
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>本机IP</strong> <strong class="colorR">*</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>子网掩码</strong> <strong class="colorR">*</strong></label>
+													<div class="layui-input-block p30">
+														<input type="text" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>DHCP</strong></label>
+													<div class="layui-input-inline p20">
+														<input type="checkbox" checked name="dhcp_switch" lay-skin="switch" lay-filter="dhcp_switch" lay-text="开启|关闭">
+													</div>
+												</div>
+											</div>
+											<div id="dhcp_switch_on" style="display:block">
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>起始IP</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="text" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>容量(个)</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="number" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 只能填写数字 *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>租期(分钟)</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="number" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 只能填写数字 *" class="layui-input">
+														</div>
+													</div>
+													<hr>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>内网隔离</strong></label>
+													<div class="layui-input-inline p20">
+														<input type="checkbox" checked name="dhcp_switch" lay-skin="switch" lay-filter="dhcp_switch" lay-text="开启|关闭">
+													</div>
+													<div class="layui-form-mid layui-word-aux">(提高网络安全性，使内网的终端不能相互访问)</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<div class="layui-input-block">
+														<button class="layui-btn layui-btn-normal" lay-submit="network_submit" lay-filter="network_submit"> <strong>提交</strong></button>
+														<button type="reset" class="layui-btn layui-btn-primary"> <strong>重置</strong></button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<div id="footer"></div>
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<!-- 公共 script 部分 -->
+<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../layui/global.js" charset="utf-8"></script>
+<script src="../script/bond.js" charset="utf-8"></script>
+<script src="../script/user.js" charset="utf-8"></script>
+<script src="../script/common_nav.js" charset="utf-8"></script>
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<script src="../layui/html5.min.js"  charset="utf-8"></script>
+<script src="../layui/respond.min.js"  charset="utf-8"></script>
+<!-- 公共 script 部分结束 -->
+
+<script type="text/javascript">
+layui.use('form', function() { //独立版的layer无需执行这一句
+	var form = layui.form
+	
+	form.on('switch(dhcp_switch)', function(data){
+		if (data.elem.checked == true) {
+			document.getElementById("dhcp_switch_on").style.display = "block";
+		}
+		else {
+			document.getElementById("dhcp_switch_on").style.display = "none";
+		}
+	});
+	
+	form.on('radio(radio_protocol)', function(data){
+		if (data.value == "dhcp") {
+			window.location.href = "./network_wan_set_dhcp.html";
+		}
+		else if (data.value == "static") {
+			//window.location.href = "./network_wan_set_static.html";
+		}
+		else if (data.value == "pppoe") {
+			window.location.href = "./network_wan_set_pppoe.html";
+		}
+	});
+});
+</script>
+
+</body>
+</html>

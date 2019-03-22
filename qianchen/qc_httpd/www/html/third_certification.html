@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+	
+
+	<!-- 公共 script 部分 -->
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+	
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("advanced_set");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/advanced_setting.png"><strong> 高级设置 >> 第三方认证</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row">
+							<center>
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<div class="layui-row grid-demo radius" style="padding: 20px; line-height: 10px;">
+										<form class="layui-form" action="" method="post">
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>认证服务器</strong></label>
+													<div class="layui-input-block p30">
+														<select name="interest" lay-filter="select_bandwidth">
+															<option value="AuthPuppy" selected>AuthPuppy服务器</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="layui-form-item">
+													<label class="layui-form-label p30"><strong>第三方认证</strong></label>
+													<div class="layui-input-inline p20" id="wifi_2g_switch_div">
+														<input type="checkbox" checked name="wifi_2g_switch" id="wifi_2g_switch" lay-skin="switch" lay-filter="wifi_2g_switch" lay-text="开启|关闭">
+													</div>
+												</div>
+											</div>
+											<div id="set_2g_div" style="display:block">
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>节点名称</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="text" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>认证服务器地址</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="text" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 请填写认证服务器地址(域名或者IP) *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>认证路径</strong> <strong class="colorR">*</strong></label>
+														<div class="layui-input-block p30">
+															<input type="text" name="title" required lay-verify="title" autocomplete="off" placeholder="* 必填 *" class="layui-input">
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>域名白名单</strong></label>
+														<div class="layui-input-block p30">
+															<textarea placeholder="可选填" class="layui-textarea"></textarea>
+														</div>
+													</div>
+													<p class="layui-input-block layui-word-aux">
+														(使用英文逗号(,)分隔域名或IP地址)
+													</p>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>免认证MAC</strong></label>
+														<div class="layui-input-block p30">
+															<textarea placeholder="可选填" class="layui-textarea"></textarea>
+														</div>
+													</div>
+													<p class="layui-input-block layui-word-aux">
+														(使用英文逗号(,)分隔域名或IP地址)
+													</p>
+												</div>
+												<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+													<div class="layui-form-item">
+														<label class="layui-form-label p30"><strong>黑名单MAC</strong></label>
+														<div class="layui-input-block p30">
+															<textarea placeholder="可选填" class="layui-textarea"></textarea>
+														</div>
+													</div>
+													<p class="layui-input-block layui-word-aux">
+														(使用英文逗号(,)分隔域名或IP地址)
+													</p>
+												</div>
+											</div>
+											<!-- 提交 -->
+											<div class="layui-col-xs10 layui-col-sm10 layui-col-md10">
+												<div class="layui-form-item">
+													<div class="layui-input-block p30">
+														<button class="layui-btn layui-btn-normal" lay-submit="network_submit" lay-filter="network_submit"> <strong>提交</strong></button>
+														<button type="reset" class="layui-btn layui-btn-primary"> <strong>重置</strong></button>
+													</div>
+												</div>
+											</div>
+											<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+												<div class="H20"></div><hr><br>
+											</div>
+										</form>
+									</div>
+								</div>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script type="text/javascript">
+layui.use('form', function() { //独立版的layer无需执行这一句
+	var form = layui.form
+	
+	form.on('switch(dhcp_switch)', function(data){
+		if (data.elem.checked == true) {
+			document.getElementById("dhcp_switch_on").style.display = "block";
+		}
+		else {
+			document.getElementById("dhcp_switch_on").style.display = "none";
+		}
+	});
+	
+	form.on('switch(wifi_2g_switch)', function(data){
+		//alert("2g: " + data.elem.checked);
+		if (data.elem.checked == true) {
+			document.getElementById("set_2g_div").style.display = "block";
+		}
+		else {
+			document.getElementById("set_2g_div").style.display = "none";
+		}
+	});
+
+	form.on('switch(wifi_5g_switch)', function(data){
+		//alert("5g: " + data.elem.checked);
+		if (data.elem.checked == true) {
+			document.getElementById("set_5g_div").style.display = "block";
+		}
+		else {
+			document.getElementById("set_5g_div").style.display = "none";
+		}
+	});
+});
+</script>
+
+</body>
+</html>

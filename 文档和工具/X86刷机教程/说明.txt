@@ -1,0 +1,11 @@
+1. U盘安装老毛桃WinPE
+2. 拷贝openwrt-x86-generic-combined-ext4.img到U盘
+3. U盘安装进入PE系统，执行cmd命令行
+4. 执行命令 physdiskwrite.exe -u 固件名称
+	选择需要安装的盘（千万不要选错，一定要选择x86路由器的盘）
+
+
+PS：虚拟机编译出来的固件用于刷机的是openwrt-x86-generic-combined-ext4.img.gz，
+	需要解压得到openwrt-x86-generic-combined-ext4.img
+	
+	openwrt-x86-generic-combined-squashfs.img用于命令行sysupgrade -v来升级更新刷机

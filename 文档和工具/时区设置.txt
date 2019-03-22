@@ -1,0 +1,4 @@
+home/seaving/ar9344_OpenWrt/openwrt/package/base-files/files/etc/config/:
+ĞŞ¸ÄsystemÅäÖÃÎÄ¼ş
+option zonename Asia/Shanghai
+option timezone CST-8

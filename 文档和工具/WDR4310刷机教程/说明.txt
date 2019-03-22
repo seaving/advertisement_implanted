@@ -1,0 +1,14 @@
+烧写镜像： openwrt编译出来后，文件系统和kernel已经被打包成bin（openwrt-ar71xx-generic-tl-wdr4310-v1-jffs2-64k-factory.bin
+）文件了，所以一次性烧录
+
+wdr4310的uboot登录密码 tpl（同时三个手指按住 t，p，l三个键，这样才能进入uboot）
+
+接线： 网线接到电脑以及路由器的LAN口（不是WAN口）
+
+erase 0x9f020000 +0x7c0000
+
+tftpboot 0x81000000 openwrt-ar71xx-generic-tl-wdr4310-v1-jffs2-64k-factory.bin
+
+cp.b 0x81000000 0x9f020000 0x7c0000
+
+bootm 0x9f020000

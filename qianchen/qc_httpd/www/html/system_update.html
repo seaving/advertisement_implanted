@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+	
+	<!-- 公共 script 部分 -->
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+	
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("system_tool");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/system.png"> <strong>系统工具 >> 软件升级</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row grid-demo radius">
+							<div class="layui-col-xs10 layui-col-sm10 layui-col-md10" style="padding: 20px; line-height: 0px;">
+								<p class="font-size-15px tit" style="float:left; margin: 0;font-size: 16px;">
+								警告：本地升级请务必选择适合路由器的固件，否则有变砖的风险！更新过程中请不要进行其他操作，请不要断电！</p>
+							</div>
+							<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+								<hr>
+							</div>
+							<center>
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+									<button class="round-button gray" style="height:300px; width:300px;">当前版本<br>QianChen-1.2.33</button>
+								</div>
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 grid-demo-2">
+									<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+										<button class="layui-btn round-button green" style="height:150px; width:150px;" id="locao_update">本地升级</button>
+									</div>
+									<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+										<button class="layui-btn round-button orange" style="height:150px; width:150px;">远程升级</button>
+									</div>
+								</div>
+							</center>
+						</div>
+						<!--<div class="layui-row grid-demo radius" style="padding: 20px; line-height: 10px;">
+							<div class="layui-col-xs10 layui-col-sm10 layui-col-md10" style="padding: 20px; line-height: 0px;">
+								<p class="font-size-15px tit" style="float:left; margin: 0;font-size: 16px;">升级设置</p>
+							</div>
+							<center>
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<hr>
+								</div>
+								<form class="layui-form" action="">
+									<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+										<div class="layui-form-item">
+											<label class="layui-form-label p30"><strong>定时升级</strong></label>
+											<div class="layui-input-inline p10" id="reboot_task">
+												<input type="checkbox" checked name="reboot_time" id="reboot_time_switch" lay-skin="switch" lay-filter="reboot_time_switch" lay-text="开启|关闭">
+											</div>
+										</div>
+									</div>
+									<div id="reboot_task_div" style="display:block">
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<div class="layui-form-item">
+												<label class="layui-form-label p30"><strong>定时自动升级 每天</strong></label>
+												<div class="layui-input-inline p20">
+													<select name="interest" lay-filter="select_bandwidth">
+														<option value="0:00" selected>0:00</option>
+														<option value="1:00">1:00</option>
+														<option value="2:00">2:00</option>
+														<option value="3:00">3:00</option>
+														<option value="4:00">4:00</option>
+														<option value="5:00">5:00</option>
+														<option value="6:00">6:00</option>
+														<option value="7:00">7:00</option>
+														<option value="8:00">8:00</option>
+														<option value="9:00">9:00</option>
+														<option value="10:00">10:00</option>
+														<option value="11:00">11:00</option>
+														<option value="12:00">12:00</option>
+														<option value="13:00">13:00</option>
+														<option value="14:00">14:00</option>
+														<option value="15:00">15:00</option>
+														<option value="16:00">16:00</option>
+														<option value="17:00">17:00</option>
+														<option value="18:00">18:00</option>
+														<option value="19:00">19:00</option>
+														<option value="20:00">20:00</option>
+														<option value="21:00">21:00</option>
+														<option value="22:00">22:00</option>
+														<option value="23:00">23:00</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="layui-col-xs9 layui-col-sm9 layui-col-md9">
+										<div class="layui-form-item">
+											<div class="layui-input-block">
+												<button class="layui-btn layui-btn-normal" lay-submit="reboot_task_submit" lay-filter="reboot_task_submit"> <strong>保存</strong></button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</center>
+							<div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="demo">
+								<div class="layui-progress-bar layui-bg-red" id="loading" lay-percent="0%"></div>
+							</div>
+						</div>-->
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script>
+var layer_index = null;
+	
+function isValidIP(ip) {
+    var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+    return reg.test(ip);
+}
+
+function close_layer() {
+	if (layer_index != null) {
+		layer.close(layer_index);
+	}
+}
+
+/*function loading() {
+	var DISABLED = 'layui-btn-disabled';
+	if ($('#loading').hasClass(DISABLED)) {
+		return;
+	}
+	
+	var element = null;
+	layui.use('element', function(){
+		element = layui.element;
+	});
+	
+	//模拟loading
+	var n = 0, timer = setInterval(function() {
+			n = n + Math.random()*10|0;  
+			if(n>100){
+				n = 100;
+				clearInterval(timer);
+				$('#loading').removeClass(DISABLED);
+			}
+			element.progress('demo', n + '%');
+		}, 300 + Math.random() * 1000);
+
+	$('#loading').addClass(DISABLED);
+}*/
+
+layui.use(['layer', 'form', 'upload'], function(){
+	var table = layui.table;
+	var layer = layui.layer;
+	var form = layui.form;
+	var upload = layui.upload;
+	
+	//指定允许上传的文件类型
+	upload.render({
+		elem: '#locao_update'
+		,url: '/upload/'
+		,accept: 'file' //普通文件
+		,before: function(obj) {
+			layer.closeAll();
+			layer.confirm(
+				'请务必上传适合路由器的固件，否则有变砖的风险！<br>更新过程中请不要进行其他操作，请不要断电！'
+				,{
+					title: "警告"
+					,closeBtn: false
+					,btn: ['确认', '取消']
+					,shade: 0.2	//背景透明度
+					,btnAlign: 'c'
+				}
+				,function(index) {
+					//确认回调
+					//alert("确认回调");
+					layer.load();
+				}
+				,function(index) {
+					//取消回调
+					
+					layer.close(index);
+				}
+			);
+		}
+		,done: function(res, index, upload) {
+			layer.closeAll();
+		}
+		,error: function(index, upload) {
+			layer.closeAll();
+		}
+	});
+  
+	form.on('switch(reboot_time_switch)', function(data){
+		//alert("2g: " + data.elem.checked);
+		if (data.elem.checked == true) {
+			document.getElementById("reboot_task_div").style.display = "block";
+		}
+		else {
+			document.getElementById("reboot_task_div").style.display = "none";
+		}
+	});
+	
+	//自定义验证规则
+	form.verify({
+		rule_name: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			if (value.length > 32) {
+				return '长度限1~32个字符';
+			}
+		}
+		,src_port: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			if (value > 65535) {
+				return '端口范围在 1~65535';
+			}
+		}
+		,dst_port: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			if (value > 65535) {
+				return '端口范围在 1~65535';
+			}
+		}
+		,dst_ip: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			
+			if (isValidIP(value) == false) {
+				return 'IP格式错误，格式: 192.168.1.1';
+			}
+		}
+	});
+	
+	var Function = {
+  		reboot: function() {
+			//配置一个透明的询问框
+			layer.confirm(
+				'确认重启路由器？重启过程大约2分钟'
+				,{
+					title: false
+					,closeBtn: false
+					,btn: ['确认', '取消']
+					,shade: 0.2	//背景透明度
+					,btnAlign: 'c'
+				}
+				,function(index) {
+					//确认回调
+					alert("确认回调");
+					
+					layer.close(index);
+				}
+				,function(index) {
+					//取消回调
+					
+					layer.close(index);
+				}
+			);
+		}
+	};
+  
+  	//监听提交
+	form.on('submit(reboot_task_submit)', function(data) {
+		//ajax提交，并接收返回结果，如果返回成功，则返回
+		//调用layer.close关闭当前弹层，并提示设置成功
+		layer.alert(JSON.stringify(data.field), {
+			title: '最终的提交信息'
+		});
+		return false;
+	});
+  
+	$('#reboot').on('click', function() {
+		Function.reboot();
+	});
+});
+</script>
+</body>
+<script src="../layui/global.js" charset="utf-8"></script>
+
+</html>

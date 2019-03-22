@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="renderer" content="webkit">
+	<title>无线设置</title>
+
+	<link rel="stylesheet" href="../css/third/bootstrap.css" />
+	<link rel="stylesheet" href="../css/third/bootstrap-slider.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-overrides.css" type="text/css" />
+	<link rel="stylesheet" href="../css/layout.css" type="text/css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/wireless.css" />
+
+</head>
+
+<body onload="request_wireless_info();">
+
+	<script src="../js/common.js"></script>
+
+	<!--header navbar-->
+	<header id="nav" class="navbar navbar-inverse" role="banner"></header>
+	<!--end header navbar-->
+
+	<!--left side navbar-->
+	<div id="sidebar-nav"></div>
+	<!--end left side navbar-->
+
+	<!-- main container -->
+	<div class="content">
+		<!--start 2.4G设置-->
+		<div id="wireless" class="col-xs-12 common-header-title wireless">
+			<h1>2.4G设置</h1>
+			<form id="wireless-form" action="wireless.html?api=set_wireless">
+				<!--left colum-->
+				<div class="col-md-5 col-xs-12 left-colum">
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线开关:</label>
+						<div class="col-xs-9">
+							<select id="wireless_switch" class="form-control qc-switch">
+								<option value="0">开启</option>
+								<option value="1">关闭</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线通道:</label>
+						<div class="col-xs-9">
+							<select id="channel" class="form-control qc-switch">
+								<option value="1">1 (2412 MHz)</option>
+								<option value="2">2 (2417 MHz)</option>
+								<option value="3">3 (2422 MHz)</option>
+								<option value="4">4 (2427 MHz)</option>
+								<option value="5">5 (2432 MHz)</option>
+								<option value="6">6 (2437 MHz)</option>
+								<option value="7">7 (2442 MHz)</option>
+								<option value="8">8 (2447 MHz)</option>
+								<option value="9">9 (2452 MHz)</option>
+								<option value="10">10 (2457 MHz)</option>
+								<option value="11">11 (2462 MHz)</option>
+								<option value="13">13 (2472 MHz)</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线带宽:</label>
+						<div class="col-xs-9">
+							<select id="htmode" class="form-control qc-switch">
+								<option value="HT20">20MHz</option>
+								<option value="HT40">40MHz</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">信号强度:</label>
+
+						<div class="col-xs-9">
+							<b>4</b><b style="float:right;">30</b>
+							<input id="txpower" data-slider-id="txpower-slider" type="text" data-slider-min="4" data-slider-max="30" data-slider-step="1" data-slider-value="0"/>
+						</div>
+					</div>
+				</div>
+
+				<!--right colum-->
+				<div class="col-md-5 col-xs-12 column pull-right right-colum">
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">隐藏SSID:</label>
+						<div class="col-xs-9">
+							<select id="wireless_hidden" class="form-control qc-switch">
+								<option value="0">广播</option>
+								<option value="1">隐藏</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">SSID:</label>
+						<div class="col-xs-9">
+							<input type="text" id="ssid" class="form-control" placeholder="" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线安全:</label>
+						<div class="col-xs-9">
+							<select id="password_switch" class="form-control qc-switch" onchange="select2GPwdSwitchEvent(this.value);">
+								<option value="1">开启</option>
+								<option value="0">关闭</option>
+							</select>
+						</div>
+					</div>
+					<div id="pwd-group" class="form-group" style="display:none">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线密码:</label>
+						<div class="col-xs-9">
+							<input type="password" id="wireless_password" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<!--提交按钮-->
+				<div class="form-group">
+					<div class="confirm-btn">
+						<button type="button" class="btn btn-block" onclick="submit2GWirelessEvent();">提 交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--end 2.4G设置-->
+
+		<!--start 分割线-->
+		<div class="col-xs-12 qc-line" style="display: none"></div>
+		<!--end 分割线-->
+
+		<!--start 5G设置-->
+		<div id="wireless-5" class="col-xs-12 common-header-title">
+			<h1>5G设置</h1>
+			<form id="wireless-form-5" action="wireless.html?api=set_wireless">
+				<!--left colum-->
+				<div class="col-md-5 col-xs-12 left-colum">
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线开关:</label>
+						<div class="col-xs-9">
+							<select id="wireless_switch_5" class="form-control qc-switch">
+								<option value="0">开启</option>
+								<option value="1">关闭</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线通道:</label>
+						<div class="col-xs-9">
+							<select id="channel_5" class="form-control qc-switch">
+								<option value="149">149 (5745 MHz)</option>
+								<option value="153">153 (5765 MHz)</option>
+								<option value="157">157 (5785 MHz)</option>
+								<option value="161">161 (5805 MHz)</option>
+								<!--<option value="165">165 (5825 MHz)</option>-->
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线带宽:</label>
+						<div class="col-xs-9">
+							<select id="htmode_5" class="form-control qc-switch">
+								<option value="HT40">40MHz</option>
+								<option value="VHT80">80MHz</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">信号强度:</label>
+						<div class="col-xs-9">
+							<b>4</b><b style="float:right;">30</b>
+							<input id="txpower_5" data-slider-id="txpower-slider-5" type="text" data-slider-min="4" data-slider-max="30" data-slider-step="1" data-slider-value="0"/>
+						</div>
+					</div>
+				</div>
+
+				<!--right colum-->
+				<div class="col-md-5 col-xs-12 column pull-right right-colum">
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">隐藏SSID:</label>
+						<div class="col-xs-9">
+							<select id="wireless_hidden_5" class="form-control qc-switch">
+								<option value="0">广播</option>
+								<option value="1">隐藏</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">SSID:</label>
+						<div class="col-xs-9">
+							<input type="text" id="ssid_5" class="form-control" placeholder="" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线安全:</label>
+						<div class="col-xs-9">
+							<select id="password_switch_5" class="form-control qc-switch" onchange="select5GPwdSwitchEvent(this.value);">
+								<option value="1">开启</option>
+								<option value="0">关闭</option>
+							</select>
+						</div>
+					</div>
+					<div id="pwd-group-5" class="form-group" style="display:none">
+						<label class="col-xs-3 control-label" style="padding-right: 0;">无线密码:</label>
+						<div class="col-xs-9">
+							<input type="password" id="wireless_password_5" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<!--提交按钮-->
+				<div class="form-group">
+					<div class="confirm-btn">
+						<button type="button" class="btn btn-block" onclick="submit5GWirelessEvent();">提 交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--end 5G设置-->
+
+
+	</div>
+	<!-- end main container -->
+
+	<!-- scripts -->
+	<script src="../js/third/jquery-3.2.1.min.js"></script>
+	<script src="../js/third/bootstrap.min.js"></script>
+	<script src="../js/third/jquery.knob.js"></script>
+	<script src="../js/third/layer/layer.js"></script>
+	<script src="../js/third/bootstrap-slider.min.js"></script>
+	<script src="../js/wireless.js"></script>
+	<script src="../js/third/theme.js"></script>
+	<script>
+		var arr = $(".qc-switch");
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].selectedIndex = -1;
+		}
+	</script>
+</body>
+</html>

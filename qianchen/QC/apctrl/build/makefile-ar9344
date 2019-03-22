@@ -1,0 +1,86 @@
+# Makefile Written by ticktick
+
+# Show how to cross-compile c/c++ code for android platform
+
+.PHONY: clean
+
+STAGING_DIR_CONF = /home/seaving/ar9344_OpenWrt/openwrt/staging_dir/toolchain-mips_34kc_gcc-5.3.0_musl-1.1.14
+export STAGING_DIR=$(STAGING_DIR_CONF):$STAGING_DIR
+
+CC_DIR = $(STAGING_DIR_CONF)/bin
+CROSS_COMPILE = $(CC_DIR)/mips-openwrt-linux-
+CC = $(CROSS_COMPILE)gcc
+CXX = $(CROSS_COMPILE)g++
+AR = $(CROSS_COMPILE)ar
+LD = $(CROSS_COMPILE)ld
+STRIP = $(CROSS_COMPILE)strip
+WALL = -Wall
+
+CUR_DIR = $(shell pwd)
+
+INCLUDE = -I$(STAGING_DIR_CONF)/include -I$(CUR_DIR)/lib/include 
+LIB_INC = -L$(STAGING_DIR_CONF)/lib -L$(CUR_DIR)/lib
+
+CFLAGS =
+TARGET_DIR = $(CUR_DIR)/hex/
+TARGET_NAME = apctrl
+TARGET = $(TARGET_DIR)$(TARGET_NAME)
+		
+
+SRC_DIR = $(CUR_DIR)/src
+
+OBJ_DIR = $(CUR_DIR)/obj
+
+SRC_ID_FILE = $(SRC_DIR)/id.h
+
+VERSION?="V1.0"
+
+ID?="default000000"
+PLATFORMS?="undowndev"
+DEBUG_ON?="0"
+
+$(shell rm -rf $(SRC_ID_FILE))
+$(shell sync)
+$(shell touch $(SRC_ID_FILE))
+$(shell echo "#ifndef __ID_H__" >> $(SRC_ID_FILE))
+$(shell echo "#define __ID_H__" >> $(SRC_ID_FILE))
+
+$(shell echo >> $(SRC_ID_FILE))
+$(shell echo "#define ID             \"$(ID)\"" >> $(SRC_ID_FILE))
+
+$(shell echo >> $(SRC_ID_FILE))
+$(shell echo "#define PLATFORMS      \"$(PLATFORMS)\"" >> $(SRC_ID_FILE))
+
+$(shell echo >> $(SRC_ID_FILE))
+$(shell echo "#define MODULE_NAME	 \"$(TARGET_NAME)\"" >> $(SRC_ID_FILE))
+
+#$(shell echo >> $(SRC_ID_FILE))
+#$(shell echo "#define DEBUG_ON	     $(DEBUG_ON)" >> $(SRC_ID_FILE))
+
+$(shell echo >> $(SRC_ID_FILE))
+#
+$(shell echo >> $(SRC_ID_FILE))
+$(shell echo "#endif" >> $(SRC_ID_FILE))
+$(shell sync)
+	
+#获取当前目录下所有的.c文件
+SOURCE = $(wildcard $(SRC_DIR)/*.c)
+
+# -lssl -lcrypto -ldl   -lssl -lcrypto -ldl   -L$(CUR_DIR)/lib 
+
+#得到相应的.o文件,所有的.c文件替换为.o文件
+OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(notdir $(SOURCE)))
+
+#-gstabs  $(LIB_INC) -ggdb3 -lssl -lcrypto -ldl 
+$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
+	$(CC) -ggdb $(WALL) $(INCLUDE) $(LIB_INC) $< -c -o $@ -lpthread
+
+#生成目标的依赖 -lssl -lcrypto -ldl 
+$(TARGET): $(OBJ) $(OBJ_CPP)
+	@echo "--------------create $(TARGET)---------"
+	$(CC) $(WALL) $(LIB_INC) -o $@ $^ -lpthread
+	$(STRIP) $(TARGET)
+	ls -alh $(TARGET_DIR) | grep $(TARGET_NAME)
+clean:
+	rm -rf $(OBJ_DIR)/*.o
+	rm -rf $(TARGET)

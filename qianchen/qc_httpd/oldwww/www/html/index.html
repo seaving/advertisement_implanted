@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>系统信息</title>
+	
+    <link rel="stylesheet" href="../css/third/bootstrap.css" />
+    <link rel="stylesheet" href="../css/bootstrap-overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/index.css" type="text/css" media="screen" />
+
+</head>
+<body onload="request_system_loop();">
+
+    <script src="../js/common.js"></script>
+
+    <!--header navbar-->
+    <header id="nav" class="navbar navbar-inverse" role="banner"></header>
+    <!--end header navbar-->
+
+    <!--left side navbar-->
+    <div id="sidebar-nav"></div>
+    <!--end left side navbar-->
+
+	<!-- main container -->
+    <div class="content">
+        <div class="col-xs-12 common-header-title">
+            <h1>系统信息</h1>
+            <div class="info-content">
+                <div class="row info-content-row">
+                    <label class="col-md-1 col-sm-3 col-xs-3 span-prompt common-font">固件版本:</label>
+                    <label class="col-md-11 col-sm-9 col-xs-9 span-content" id="firmware_version"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-1 col-sm-3 col-xs-3 span-prompt common-font">内存:</label>
+                    <label class="col-md-11 col-sm-9 col-xs-9 span-content">
+                        <div class="progress">
+                            <div id="memory_used" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                            </div>
+                        </div>
+                        <label id="memory-used-label" class="common-font" style="min-height: 10px;margin-bottom: 0;margin-top: 5px"></label>
+                    </label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-1 col-sm-3 col-xs-3 span-prompt common-font">CPU:</label>
+                    <label class="col-md-11 col-sm-9 col-xs-9 span-content" id="cpu"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-1 col-sm-3 col-xs-3 span-prompt common-font">Model:</label>
+                    <label class="col-md-11 col-sm-9 col-xs-9 span-content" id="model"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-1 col-sm-3 col-xs-3 span-prompt common-font">主机名:</label>
+                    <label class="col-md-11 col-sm-9 col-xs-9 span-content" id="hostname"></label>
+                </div>
+                <div class="row info-content-row">
+                    <label class="col-md-1 col-sm-3 col-xs-3 span-prompt common-font">系统版本:</label>
+                    <label class="col-md-11 col-sm-9 col-xs-9 span-content" id="system_version"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end main container-->
+
+    <!-- scripts -->
+    <script src="../js/third/jquery-3.2.1.min.js"></script>
+    <script src="../js/third/bootstrap.min.js"></script>
+    <script src="../js/third/jquery.knob.js"></script>
+    <script src="../js/third/layer/layer.js"></script>
+    <script src="../js/system.js"></script>
+    <script src="../js/third/theme.js"></script>
+
+</body>
+</html>

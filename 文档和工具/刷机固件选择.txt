@@ -1,0 +1,2 @@
+如果用web刷那么选择 带有 factory的bin,再刷sysupgrade
+如果是uboot命令刷，则选择sysupgrade的bin

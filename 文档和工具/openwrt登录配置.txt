@@ -1,0 +1,100 @@
+Openwrt 串口密码登入
+原创 2015年06月05日 15:49:15 5660
+为了安全性考虑，进行串口登入的时候也希望像ssh那样要求输入用户名和密码才能进入控制台。
+
+一、客制化busybox
+make menuconfig
+
+Base system --->
+  <*> busybox ......
+         [*] Customize busybox option
+               Login/Password Management Utilities --->
+                     [*] login (NEW)
+
+二、修改启动脚本
+vim /etc/inittab
+
+::askconsole:/bin/ash --login
+改为
+::askconsole:/bin/login
+
+三、root密码默认设置
+package/base-files/files/etc/shadow
+
+可以通过webui设置好，查看/etc/shadow文件，再写到源码。
+
+
+注：系统启动会执行到/etc/inittab，最后一行::askconsole:/bin/ash --login
+/bin/ash 附带 --login 参数, ash 则会在进入 cmdloop 之前, 先去载入 /etc/profile 
+
+
+=======================================================================================
+openwrt中给串口加密码
+
+Posted on 2016年1月12日 by 阿勇
+官网wiki
+
+http://wiki.openwrt.org/doc/howto/serial.console.password
+
+步骤
+
+确认开启busybox的login
+
+Shell
+
+CONFIG_BUSYBOX_CONFIG_LOGIN=y
+1
+CONFIG_BUSYBOX_CONFIG_LOGIN=y
+修改/etc/inittab
+
+把原来的
+
+Shell
+
+::askconsole:/bin/ash --login
+1
+::askconsole:/bin/ash --login
+改成
+
+Shell
+
+::askconsole:/bin/login
+1
+::askconsole:/bin/login
+ 
+
+这个地方是依情况而定的，比如我的7620A固件是这样的
+
+Vim
+
+ttyS0::askfirst:/bin/ash --login
+ttyS1::askfirst:/bin/ash --login
+1
+2
+ttyS0::askfirst:/bin/ash --login
+ttyS1::askfirst:/bin/ash --login
+相应的改成
+
+Vim
+
+ttyS0::askfirst:/bin/login
+ttyS1::askfirst:/bin/login
+1
+2
+ttyS0::askfirst:/bin/login
+ttyS1::askfirst:/bin/login
+即可。
+
+禁用单用户模式
+
+Single user mode is available through GRUB and allows to boot without password. An attacker is then able to change root password and reboot.
+
+A solution would be to lock-down OpenWRT booloader process, to make sure that booting in linux single user mode is impossible. This has to be discussed and this is not yet documented.
+
+禁用单用户模式可以做到串口一个用户名和密码，root一个用户名和密码，不冲突。
+
+ 
+
+禁用串口写入
+
+如果像禁用串口的写操作，可以将::askconsole:/bin/login这个一行注释掉，用#注释即可。

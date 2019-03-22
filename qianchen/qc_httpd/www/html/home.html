@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+
+		
+	<!-- 公共 script 部分 -->
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("all");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/home.png"> <strong>首页</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row">
+							<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+								<div class="layui-col-xs5 layui-col-sm5 layui-col-md5">
+									<div class="layui-row grid-demo radius" style="line-height: 19px;">
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<p class="font-size-15px tit">型号</p>
+											<p class="font-size-18px txt"><span id="model"> </span></p>
+											<div class="H20"></div>
+										</div>
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<p class="font-size-15px tit">版本号</p>
+											<p class="font-size-18px txt"><span id="version"> </span></p>
+											<div class="H20"></div>
+										</div>
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<p class="font-size-15px tit">MAC地址</p>
+											<p class="font-size-18px txt"><span id="mac"> </span></p>
+											<div class="H20"></div>
+											
+										</div>
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<p class="font-size-15px tit">内网信息</p>
+											<p class="font-size-10px txt"><span style="color:red">2G</span>-认证SSID： <span style="font-size: 15px;" id="auth_ssid_2g"> </span></p>
+											<p class="font-size-10px txt"><span style="color:red">5G</span>-认证SSID： <span style="font-size: 15px;" id="auth_ssid_5g"> </span></p>
+											<p class="font-size-10px txt"><span style="color:red">2G</span>-免认证SSID： <span style="font-size: 15px;" id="not_auth_ssid_2g"> </span></p>
+											<p class="font-size-10px txt"><span style="color:red">5G</span>-免认证SSID： <span style="font-size: 15px;" id="not_auth_ssid_5g"> </span></p>
+											<hr>
+											<p class="font-size-10px txt">认证 IP 已分配： <span style="font-size: 15px;" id="ip_auth_count"> </span></p>
+											<p class="font-size-10px txt">认证 DHCP 容量： <span style="font-size: 15px;" id="dhcp_auth_max_count"> </span></p>
+											<p class="font-size-10px txt">免认证 IP 已分配：  <span style="font-size: 15px;" id="ip_not_auth_count"> </span></p>
+											<p class="font-size-10px txt">免认证 DHCP 容量： <span style="font-size: 15px;" id="dhcp_not_auth_max_count"> </span></p>
+											<div class="H20"></div>
+										</div>
+										<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+											<p class="font-size-15px tit">外网信息</p>
+											<p class="font-size-15px txt">外网IP：<span id="wan_ip"> </span></p>
+											<p class="font-size-15px txt">DNS：<span id="dns"> </span></p>
+											<p class="font-size-15px txt">协议类型：<span id="protocol"> </span></p>
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-xs7 layui-col-sm7 layui-col-md7 col">
+									<div class="layui-row grid-demo radius">
+										<div class="layui-col-sm1 layui-col-md1 layui-hide-xs">
+											<li class="layui-icon nav_icon total"><img src="../img/total.png"></li>
+										</div>
+										<div class="layui-col-xs4 layui-col-sm3 layui-col-md3">
+											<p class="font-size-15px tit">在线终端</p>
+											<p class="font-size-30px val"><span id="online_client_cnt">2</span></p>
+										</div>
+										<div class="layui-col-sm1 layui-col-md1 layui-hide-xs">
+											<li class="layui-icon nav_icon mobile layui-hide-xs"><img src="../img/no_auth.png"></li>
+										</div>
+										<div class="layui-col-xs4 layui-col-sm3 layui-col-md3">
+											<p class="font-size-15px tit">认证端</p>
+											<p class="font-size-30px val"><span id="auth_online_client_cnt">2</span></p>
+										</div>
+										<div class="layui-col-sm1 layui-col-md1 layui-hide-xs">
+											<li class="layui-icon nav_icon pc"><img src="../img/auth.png"></li>
+										</div>
+										<div class="layui-col-xs4 layui-col-sm3 layui-col-md3">
+											<p class="font-size-15px tit">免认证端</p>
+											<p class="font-size-30px val"><span id="no_auth_online_client_cnt">2</span></p>
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-xs7 layui-col-sm7 layui-col-md7">
+									<div class="layui-row">
+										<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 col">
+											<div class="grid-demo radius">
+												<div class="layui-row">
+													<div class="layui-col-xs12 layui-col-sm10 layui-col-md10">
+														<p class="font-size-15px tit">总上行(KB/s)</p>
+														<p class="font-size-30px val"><span id="upload_speed">0.00</span></p>
+													</div>
+													<div class="layui-col-sm2 layui-col-md2 layui-hide-xs">
+														<li class="layui-icon nav_icon upload layui-hide-xs"><img src="../img/upload.png"></li>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 col">
+											<div class="grid-demo radius">
+												<div class="layui-row">
+													<div class="layui-col-xs12 layui-col-sm10 layui-col-md10">
+														<p class="font-size-15px tit">总下行(KB/s)</p>
+														<p class="font-size-30px val"><span id="download_speed">0.00</span></p>
+													</div>
+													<div class="layui-col-sm2 layui-col-md2 layui-hide-xs">
+														<li class="layui-icon nav_icon download layui-hide-xs"><img src="../img/download.png"></li>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-xs7 layui-col-sm7 layui-col-md7">
+									<div class="layui-row">
+										<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 col">
+											<div class="grid-demo radius">
+												<div class="layui-row">
+													<div class="layui-col-xs12 layui-col-sm10 layui-col-md10">
+														<p class="font-size-15px tit">总速率(KB/s)</p>
+														<p class="font-size-30px val"><span id="total_speed">0.00</span></p>
+													</div>
+													<div class="layui-col-sm2 layui-col-md2 layui-hide-xs">
+														<li class="layui-icon nav_icon upload layui-hide-xs"><img src="../img/up_down.png"></li>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 col">
+											<div class="grid-demo radius">
+												<div class="layui-row">
+													<div class="layui-col-xs12 layui-col-sm10 layui-col-md10">
+														<p class="font-size-15px tit">总流量(<span id="traffic_cnt_unit">MB</span>)</p>
+														<p class="font-size-30px val"><span id="traffic_total_count">0.00</span></p>
+													</div>
+													<div class="layui-col-sm2 layui-col-md2 layui-hide-xs">
+														<li class="layui-icon nav_icon download layui-hide-xs"><img src="../img/traffic.png"></li>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-xs7 layui-col-sm7 layui-col-md7">
+									<div class="layui-row">
+										<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 col">
+											<div class="grid-demo radius">
+												<div class="layui-row">
+													<div class="layui-col-xs12 layui-col-sm10 layui-col-md10">
+														<p class="font-size-15px tit">定时重启(每天)</p>
+														<p class="font-size-20px val"><span id="reboot_time" class="colorG">未设置</span></p>
+													</div>
+													<div class="layui-col-sm2 layui-col-md2 layui-hide-xs">
+														<li class="layui-icon nav_icon connection layui-hide-xs"><img src="../img/reboot_2.png"></li>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="layui-col-xs6 layui-col-sm6 layui-col-md6 col">
+											<div class="grid-demo radius">
+												<div class="layui-row">
+													<div class="layui-col-xs12 layui-col-sm10 layui-col-md10">
+														<p class="font-size-15px tit">绑定状态</p>
+														<p class="font-size-20px val"><span id="bond_state" class="colorG">未查询到状态</span></p>
+
+													</div>
+													<div class="layui-col-sm2 layui-col-md2 layui-hide-xs">
+														<li class="layui-icon nav_icon account_bond layui-hide-xs"><img src="../img/account_bond.png"></li>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 grid-demo radius">
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<p class="font-size-15px tit" style="float:left; margin: 0;font-size: 16px;">内网流量排行TOP10</p>
+								</div>
+								<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+									<table id="traffic_table" class="layui-table" lay-filter="traffic_table"></table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+
+<script src="../script/home.js" charset="utf-8"></script>
+
+</body>
+</html>

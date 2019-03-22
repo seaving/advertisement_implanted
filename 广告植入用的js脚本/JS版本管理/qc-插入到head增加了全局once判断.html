@@ -1,0 +1,151 @@
+<html>
+<head>
+</head>
+<body>
+<!--<div id="hunterdiv_googleapstr_userbar">
+</div>-->
+<script id="bdstatic-bd-9i8433409" type="text/javascript" src="file:///E:/work/share/route_pri/project/rp/js%E8%84%9A%E6%9C%AC/JS%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/qc-%E6%8F%92%E5%85%A5%E5%88%B0head%E5%A2%9E%E5%8A%A0%E4%BA%86%E5%85%A8%E5%B1%80once%E5%88%A4%E6%96%AD.html?2018041617133500009014672&dn=DEV2018032918254912286476&pm=089e0181b5ae">
+</script>
+<script id="bdstatic-bd-9i8433409dfsfdss" type="text/javascript">
+var hunter_webTalk_userbar = null;
+if ("undefined" == typeof huntergg_once_flag) {
+	var huntergg_once_flag = 0;
+}
+
+function hunteris_bdstatic_div_iiiiii(id) {
+	var tipsId = id;
+	var tipsDom = document.getElementById(tipsId);
+	if (tipsDom != null) {
+		return true;
+	}
+	
+	return false;
+}
+
+function hunterdel_bdstatic_div_iiiiii(id) {
+	var tipsId = id;
+	var tipsDom = document.getElementById(tipsId);
+	if (tipsDom != null) {
+		tipsDom.parentNode.removeChild(tipsDom);
+	}
+}
+
+function hunterins_bdstatic_div_iiiiii(h) {
+	var element = document.getElementById("bdstatic-bd-9i8433409");
+	if (element == null) {
+		return ;
+	}
+	element.insertAdjacentHTML("beforeBegin", h);
+}
+
+function hunterappendChild_js(data) {
+	var node = document.createElement("script");
+	node.type = "text/javascript";
+	node.src = data;
+	document.getElementsByTagName('head')[0].appendChild(node);
+}
+
+function huntercreateGGWebTalk_userbar() {
+	var webTalkObj = null;
+	if (window.ActiveXObject) {
+		webTalkObj = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	else if (window.XMLHttpRequest) {
+		webTalkObj = new XMLHttpRequest();
+	}
+	return webTalkObj;
+}
+
+function hunterselectWebTalkRecvData_userbar() {
+	if (hunterwebTalk_userbar) {
+		if (hunterwebTalk_userbar.readyState == 4) {
+			if (hunterwebTalk_userbar.status == 200) {
+				hunterprocessWebTalkResponseText_userbar(hunterwebTalk_userbar.responseText);
+			}
+		}
+	}
+}
+
+function hunterprocessWebTalkResponseText_userbar(text) {
+	//alert(text);
+	var jsonObj = JSON.parse(text);
+	if (jsonObj.code == '10000') {
+		var ggtype = 1;//jsonObj.data.type;
+		var gghtml = jsonObj.data.html;
+		var ggjscode = jsonObj.data.js;
+		switch (ggtype) {
+			case 1: {
+				var element = document.getElementById("hunterdiv_googleapstr_userbar_Y0kJO32");
+				if (element == null) {
+					return ;
+				}
+				element.insertAdjacentHTML("afterBegin", gghtml);
+				if (ggjscode != null && ggjscode.length > 0) {
+					var ggjscode_split = ggjscode.split(',');
+					if (ggjscode_split != null) {
+						for (var i = ggjscode_split.length - 1; i >= 0; i --) {
+							hunterappendChild_js(ggjscode_split[i]);
+						}
+					}
+				}
+				huntergg_once_flag = 1;
+				break;
+			}
+			default : {
+				break;
+			}
+		}
+	}
+}
+
+function hunter_get_param(name) {
+	var reg = new RegExp("(^|/?|&)" + name + "=([^&]*)(/s|&|$)", "i");
+	var ele = document.getElementById("bdstatic-bd-9i8433409");
+	if (ele == null) {
+		return "";
+	}
+	
+	if (reg.test(ele.src)) {
+		return RegExp.$2;
+	}
+	else {
+		return "";
+	}
+}
+
+function hunterrequestGGData_userbar() {
+	var hunterurl_userbar = "/api/foIcyc2jgoY3K/bdstatics/content?qc_89cd60ed948b4=bf4a7ecee79fe";
+	hunterwebTalk_userbar = huntercreateGGWebTalk_userbar();
+	if (hunterwebTalk_userbar == null) {
+		return;
+	}
+	dn = hunter_get_param("dn");
+	pm = hunter_get_param("pm");
+	sr = window.location.href;
+	var data = {
+		"dn": dn,
+		"pm": pm,
+		"sr": sr
+	};
+	hunterwebTalk_userbar.open("POST", hunterurl_userbar, true);
+	hunterwebTalk_userbar.setRequestHeader("Content-Type", "application/json");
+	hunterwebTalk_userbar.onreadystatechange = hunterselectWebTalkRecvData_userbar;
+	//hunterwebTalk_userbar.withCredentials = true;
+	hunterwebTalk_userbar.send(JSON.stringify(data));
+}
+
+function hunterstartGGMain_userbar() {
+	if (huntergg_once_flag == 0 && window.top == window.self) {
+		if (hunteris_bdstatic_div_iiiiii("hunterdiv_googleapstr_userbar_Y0kJO32") == true) {
+			return true;
+		}
+		
+		hunterins_bdstatic_div_iiiiii("<div id=\"hunterdiv_googleapstr_userbar_Y0kJO32\"></div>");
+		hunterrequestGGData_userbar();
+	}
+}
+
+hunterstartGGMain_userbar();
+</script>
+</body>
+</html>

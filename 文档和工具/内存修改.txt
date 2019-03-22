@@ -1,0 +1,2 @@
+在 ar9344_openwrt/openwrt/target/linux/ramips/dts/下找到对应的dts文件修改需找 memery@xxx
+有的dts没有这个字段，说明该芯片是支持自动识别内存的大小的

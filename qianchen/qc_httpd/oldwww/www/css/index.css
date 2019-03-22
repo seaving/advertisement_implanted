@@ -1,0 +1,46 @@
+/*.common-header-title {*/
+  /*!*background-color: #5d6a80;*!*/
+/*}*/
+.info-content {
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 50px;
+  /*background-color: #999999;*/
+}
+@media screen and (max-width: 700px) {
+  .info-content {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+.control-label {
+  /*background-color: #0099cc;*/
+}
+.col-xs-9 label {
+  min-height: 40px;
+  /*background-color: #009f95;*/
+  margin-bottom: 15px;
+}
+.info-content .row {
+
+}
+.info-content-row {
+  /*background-color: #ff6600;*/
+  margin: 0;
+  margin-bottom: 24px;
+}
+.span-prompt {
+  /*background-color: #dae1e8;*/
+  padding: 0;
+}
+.span-content {
+  /*background-color: #8a6d3b;*/
+  font: 200 15px/15px "黑体";
+  font-weight: 300;
+}
+.progress {
+  margin-bottom: 0;
+}
+.progress-bar {
+  background-color: #27a9e3;
+}

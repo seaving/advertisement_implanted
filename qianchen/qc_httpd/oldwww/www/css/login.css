@@ -1,0 +1,128 @@
+@charset "utf-8";
+body,ul,p,h1,h2,h3,h4,dl,dd,form,input,textarea,select{ padding:0;margin:0;}
+em { font-style:normal; }
+li { list-style:none; }
+a { text-decoration:none; color:#000;}
+img { border:none; vertical-align:top; }
+/*  input { outline:none; }*/
+body { font-size:12px; font-family:"微软雅黑";overflow: hidden; }
+
+body{width: 100%; height: 100%;}
+header .text{padding-top:54px;padding-right:10%;text-align: right; }
+header .text a{ font-size:14px; color:#fff;}
+header .text em:hover,header .text span:hover{text-decoration: underline;cursor:pointer;color: #999;}
+header .text em,header .text span{padding:0 1%;}
+
+.container {
+    text-align: center;
+    padding: 0;
+}
+.container h1{
+    color:#444;
+    font: 200 22px/84px "黑体";
+}
+.container-form {
+    /*background-color: #8a6d3b;*/
+    width: 300px;
+    height: 240px;
+}
+.col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+.loginpwd {
+    width:100%;
+    height:40px;
+    margin: 10px 0;
+    text-indent: 16%;
+    font-size: 15px;
+    color: #a0a0a1;
+}
+#password {
+    background: url("../img/password1.png") no-repeat;
+    border: 1px solid #bbbbbb;
+}
+.checkbox {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 20px;
+    /*height: 16px;*/
+}
+#rememberpwd {
+    margin-left: 0;
+    margin-top: 0
+}
+.form-group label {
+    margin-top: 0;
+}
+.checkbox label {
+    padding-left: 14px;
+    font: 200 13px/13px "黑体";
+    margin-top: 0;
+}
+/*跳修改密码页面,一个a标签*/
+.resetpwd {
+    margin-top: 12px;
+    text-align: right;
+    font: 200 14px/14px "黑体";
+}
+
+.confirm-btn  {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media screen and (max-width: 700px) {
+    .checkbox label {
+        padding-left: 20px;
+        font-size: 13px;
+        margin-top: 2px;
+    }
+}
+@media screen and (min-width: 700px) {
+    .text {
+        margin-top: 70px;
+    }
+    .checkbox label {
+        padding-left: 20px;
+        font-size: 13px
+    }
+    #rememberpwd {
+        margin-left: 0;
+    }
+}
+.footer {
+    text-align: center;
+    padding-top: 10px;
+    clear: both;
+    font: 200 14px/14px "黑体";
+}
+.footer p {
+    width:100%;
+    height:60px;
+    position: absolute;
+    bottom: 0;
+    /*background:#27a9e3;*/
+    background:#fff;
+    color:#444;}
+.footer a {
+    color: #444;
+}
+p span {
+    position: relative;
+    top: 22px;
+}
+
+/*下面只是调试布局的时候用的*/
+/*.container-form {*/
+    /*background-color: #8a6d3b;*/
+/*}*/
+/*.form-group {*/
+    /*background-color: #00aa00;*/
+/*}*/
+/*.checkbox {*/
+    /*background-color: red;*/
+/*}*/
+/*.checkbox label {*/
+    /*background-color: #843534;*/
+/*}*/

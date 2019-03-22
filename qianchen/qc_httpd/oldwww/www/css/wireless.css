@@ -1,0 +1,43 @@
+.slider.slider-horizontal {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+#txpower-slider .slider-handle, #txpower-slider-5 .slider-handle {
+    background: #27a9e3;
+}
+#txpower-slider .slider-selection, #txpower-slider-5 .slider-selection {
+    background: #27a9e3;
+}
+
+@media screen and (max-width: 700px) {
+    #wireless_password {
+        margin-bottom: 30px;
+    }
+    #wireless_password_5 {
+        margin-bottom: 30px;
+    }
+}
+@media screen and (min-width: 900px) {
+    .confirm-btn {
+        margin-left:40%;
+        margin-right:40%;
+    }
+    #txpower {
+        margin-bottom: 50px;
+    }
+    #txpower_5 {
+        margin-bottom: 50px;
+    }
+}
+
+/*调试时用*/
+/*.left-colum {*/
+    /*background-color: #ce8483;*/
+/*}*/
+/*.right-colum {*/
+    /*background-color: #5cb85c;*/
+/*}*/
+/*#wireless-form {*/
+    /*background-color: #985f0d;*/
+/*}*/

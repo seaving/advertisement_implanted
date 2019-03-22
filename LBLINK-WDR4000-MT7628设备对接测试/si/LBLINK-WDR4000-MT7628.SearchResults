@@ -1,0 +1,4 @@
+---- HEAD Matches (5 in 2 files) ----
+Auth.c (e:\work\share\route_pri\project\rp\lblink-wdr4000-mt7628\src):			//<HTML><HEAD><TITLE>Success</TITLE></HEAD><BODY>Success</BODY></HTML>
+Auth.c (e:\work\share\route_pri\project\rp\lblink-wdr4000-mt7628\src):			//printf("<HTML><HEAD><TITLE>Success</TITLE></HEAD><BODY>Success</BODY></HTML>\n");
+Phoneinfo.c (e:\work\share\route_pri\project\rp\lblink-wdr4000-mt7628\src):	if (0 == strcmp("HEAD", phone->request->method->buf))

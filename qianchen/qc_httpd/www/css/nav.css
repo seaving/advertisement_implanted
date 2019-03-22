@@ -1,0 +1,59 @@
+.nav_logo img {
+	width: 82px;
+	height: 31px;
+}
+
+.nav_icon img {
+	width: 20px;
+	height: 20px;
+}
+
+.nav_icon.power img {
+	width: 30px;
+	height: 30px;
+}
+
+.nav_icon.effect img  {
+	width: 35px;
+	height: 34px;
+}
+
+.nav_icon.total img  {
+	width: 45px;
+	height: 54px;
+}
+
+.nav_icon.pc img  {
+	width: 45px;
+	height: 54px;
+}
+
+.nav_icon.mobile img  {
+	width: 52px;
+	height: 54px;
+}
+
+.qclogo img  {
+	width: 132px;
+	height: 42px;
+}
+
+.nav_icon.upload img  {
+	width: 62px;
+	height: 62px;
+}
+
+.nav_icon.download img  {
+	width: 62px;
+	height: 62px;
+}
+
+.nav_icon.connection img  {
+	width: 45px;
+	height: 54px;
+}
+
+.nav_icon.account_bond img  {
+	width: 45px;
+	height: 54px;
+}

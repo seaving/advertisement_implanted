@@ -1,0 +1,118 @@
+﻿<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/icon.png">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    
+	<!-- Custom styles for this template -->
+    <link href="../css/starter-template.css" rel="stylesheet">
+    <link href="../css/nav_common.css" rel="stylesheet">
+	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../js/ie-emulation-modes-warning.js"></script>
+
+</head>
+<body style="background-color: #EEEEEE;" onload="request_system_loop();">
+	<div class="container" style="padding-top: 90px;">
+		<div class="row" style="vertical-align: middle;">
+			<div class="panel panel-primary" style="">
+				<div class="panel-heading" style="background-color:#4285F4">
+					<h3 class="panel-title">内网设置</h3>
+				</div>
+				<div class="panel-body col-md-offset-3">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">本机IP </label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="ip" name="ip" placeholder="必填">
+							</div>
+							<label class="control-label"><strong style="font-size:18;color:red">*</strong></label>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">子网掩码 </label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="mask" name="mask" placeholder="必填">
+							</div>
+							<label class="control-label"><strong style="font-size:18;color:red">*</strong></label>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">DHCP </label>
+							<div class="col-sm-2 radio">
+								<label class=""><input type="radio" name="proto" class="" value="on"> 开启</label>
+							</div>
+							<div class="col-sm-4 radio">
+								<label class=""><input type="radio" name="proto" checked="checked" class="" value="off"> 关闭</label>
+							</div>
+							<label class="control-label"><strong style="font-size:18;color:red">*</strong></label>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">起始IP </label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="start_ip" name="start_ip" placeholder="必填">
+							</div>
+							<label class="control-label"><strong style="font-size:18;color:red">*</strong></label>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">容量 </label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="text" class="form-control" id="pool_max_count" name="pool_max_count" placeholder="必填">
+									<span class="input-group-addon">个</span>
+								</div>
+							</div>
+							<label class="control-label"><strong style="font-size:18;color:red">*</strong></label>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">租期 </label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="text" class="form-control" id="dhcp_valid_time" name="dhcp_valid_time" placeholder="必填: 范围 60~720">
+									<span class="input-group-addon">分钟</span>
+								</div>
+							</div>
+							<label class="control-label"><strong style="font-size:18;color:red">*</strong></label>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label"></label>
+							<div class="col-sm-2">
+								<button type="button" class="btn btn-primary form-control" style="background-color:#4285F4">保存</button>
+							</div>
+							<div class="col-sm-2">
+								<button type="reset" class="btn btn-default form-control">取消</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- scripts -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+	<script src="../js/nav_network_common.js"></script>
+	<script src="../js/nav_common.js"></script>
+
+	<script>
+		nav_network_start("nav_network_lan_page");
+	</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿<html>
+<head>
+</head>
+<body>
+<div id="GGGGGG_div_00000001_router">
+	<style>
+		#GGGGGG_ggdata_display_div {
+			display:block !important;
+			position: fixed !important;
+			top:auto !important;
+			
+			width: 100% !important;
+			z-index:2137483647 !important;
+			bottom:0 !important;
+			left:0 !important;
+		}
+		#GGGGGG_ggdata_display_content {
+			position:relative;
+			margin-right: auto;
+			margin-left: auto;
+			width: 100%;
+			max-width: 1080px;
+			max-height: 165px;
+			background-color: #FFF;
+			border: none;
+			font-size: 14px;
+		}
+		.GGGGGG_ggdata_ad {
+			padding: 0 5px;
+			z-index:314743648;
+			position: absolute;
+			float: right;
+			display: block;
+			right: 0;
+			color: white;
+			font: 13px system-ui;
+			background: rgba(0, 0, 0, 0.5);
+		}
+		.GGGGGG_gg_slider_sliderWrap {
+			width: 100%;
+			max-width: 1080px;
+			max-height: 165px;
+			overflow: hidden;
+			margin: 0 auto;
+			position: relative;
+		}
+		#GGGGGG_gg_slider_ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			position: relative;
+			max-height: 165px;
+			height: auto !important;
+			transition: left .5s ease;
+		}
+		.GGGGGG_gg_slider_li {
+			position: relative;
+			float: left;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			width: 100%;
+			max-height: 165px;
+			height: auto;
+		}
+		.GGGGGG_gg_slider_a {
+			position: absolute !important;
+			max-width: 100%;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			height: auto;
+		}
+		.GGGGGG_gg_slide_img {
+			display: block !important;
+			max-width: 100%;
+			max-height: 165px;
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			width: 100%;
+			height: auto;
+		}
+		.GGGGGG_gg_slider_pageIndicator {
+			text-align: center;
+			position: absolute;
+			bottom: 0;
+			z-index: 10;
+			width: 100%;
+		}
+		.GGGGGG_gg_slider_pageIndicator div {
+			width: 8px;
+			height: 8px;
+			display: inline-block;
+			position: relative;
+			margin-right: 5px;
+			border-radius: 100%;
+		}
+		.GGGGGG_gg_slider_pageIndicator .GGGGGG_gg_active:after {
+			background: #D36710 !important;
+		}
+		.GGGGGG_gg_slider_pageIndicator div:after {
+			content: "";
+			width: 8px;
+			height: 8px;
+			background: rgba(200,200,200,1);
+			border-radius: 100%;
+			position: absolute;
+		}
+	</style>
+	
+	<div id="GGGGGG_ggdata_display_div">
+		<div id="GGGGGG_ggdata_display_content">
+			<img id="GGGGGG_ggdata_display_close" width="50" height="50" title="click_to_close" style="z-index:3147483648;margin-top: 0px;margin-left: 0px;max-height:165px;position: absolute;display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAABCCAYAAADjVADoAAACw0lEQVR4nO3av48SQRQH8MWYWFtoY7CwMLnyCv+CO/8QT87zLzBBg2Ku8S+goqC1MGQTjm4hgYAy8/2+kGP+IItdCfE44NiZ/T3JK2g28z7s7M57s56ImDIGyXfe5kh7QilCDDzPq5UeQkSM1vq0ghAxAJoVhIghOVovj7Qnk3YsFovXFYSI0Vq/ryDC6FQQYcw8z6tVECJGKVWvIMI4qyBEDMnLCiKM7xVEGN0KQsSQ/FVBhDGODQHA+L5vgiCwNrEgCIzv+wZAUnfEn1gQ/xB6vZ7p9XpWMIIgWF8vQYxlLIhNBBsYmwibGEncFbEgtk38WAyb10r8jrCVQMoI8Z8RNhJJGyGK+G+NOAllBMH+PuIhiWUFIQr7O8tDEswYghFXtcauRDOI4Lb6vC/hrCFE4bYfcQhGBhAMgJfOi65dGFlAkKR6ljmAcN/FzsPScH6ukZeHpdOTrry8Pp2efeZpQ+XsNDxvW2wn30fkrehy8sVMHsvw9dvCFkQeGzMkOZ1On1qFsNW3TLJfSfKL9/+Ie1GbneyEOtjL+Xz+wjrEJoatdr7LNj6Ar3cQyvahCEk9m82elx5CRD5uRSgZxM1wOHxSagiSK6XUm3sRSgTxeSdCGSBI9ncuiZJALLTWr/YiFBmC5Epr/fYghCJDAGgcjFBUCACtByEUEQLAj3a7/ajUEEcjFAkCQOtohCJAkFyRvDwaoAgQJH+LyFlshDxDkPy5tcFSFohoKXwaj8ePrSHkEOJmbxVZcAhF8sNBxVNBIZYkv00mk2fOALIMQRIAWlYfhgdAXJAcpJ18BDAQkYs7hy8JjprW+hRAk+Qo4eRHAJrRgWxt70wTHDWSJwAaItIRkZnl5Gci0gHQIHniZSz5XaOmlKprrc9JXgG4FpEuyT7JEck5ydvo372Nfo9I9kWkC+Ca5JXW+lwpVfcymvhfHKBsIRd7nuMAAAAASUVORK5CYII=">
+			<span class="GGGGGG_ggdata_ad">广告</span>
+			<div id="GGGGGG_gg_slider_sliderWrap" class="GGGGGG_gg_slider_sliderWrap">
+				<ul id="GGGGGG_gg_slider_ul" class="GGGGGG_gg_slider_ul">
+					<li class="GGGGGG_gg_slider_li">
+						<a class="GGGGGG_gg_slider_a" href="javascript:;" to-url="$toUrl$">
+							<img class="GGGGGG_gg_slide_img" src="http://qcimgs.oss-cn-shenzhen.aliyuncs.com/content/1/52D0FC4E609284BBE5D3D0DE37633433.jpg" alt="">
+						</a>
+					</li>
+				</ul>
+				<div id="GGGGGG_gg_slider_pageIndicator" class="GGGGGG_gg_slider_pageIndicator"></div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="2018041717231500003791870">
+</div>
+</body>
+</html>

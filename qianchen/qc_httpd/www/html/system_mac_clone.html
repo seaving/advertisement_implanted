@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前辰无线路由管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="../img/favicon.ico"/>
+	<link rel="bookmark" href="../img/favicon.ico"/>
+	
+	<link rel="stylesheet" href="../layui/css/layui.css?t=1514874759295" media="all">
+	<link rel="stylesheet" href="../css/main.css" media="all">
+	<link rel="stylesheet" href="../css/nav.css" media="all">
+	<link rel="stylesheet" href="../css/font.css" media="all">
+
+	<!-- 公共 script 部分 -->
+	<script src="../script/jquery-2.1.4.js" charset="utf-8"></script>
+	<script src="../layui/layui.js" charset="utf-8"></script>
+	<script src="../layui/global.js" charset="utf-8"></script>
+	<script src="../script/config_effect.js" charset="utf-8"></script>
+	<script src="../script/bond.js" charset="utf-8"></script>
+	<script src="../script/user.js" charset="utf-8"></script>
+	<script src="../script/common_nav.js" charset="utf-8"></script>
+
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<script src="../layui/html5.min.js"  charset="utf-8"></script>
+	<script src="../layui/respond.min.js"  charset="utf-8"></script>
+	<!-- 公共 script 部分结束 -->
+
+	<style>
+		.site-demo .layui-row{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+	<!-- 添加导航 -->
+	<div id="header_nav"></div>
+	<div id="left_side_nav"></div>
+	<div id="footer"></div>
+	<script>
+		nav_show("system_tool");
+	</script>
+	<!-- 添加导航结束 -->
+	
+	<!-- 正文 -->
+	<div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+		<ul class="layui-tab-title site-demo-title">
+			<li class="layui-this layui-icon"><img src="../img/system.png"> <strong>系统工具 >> MAC地址克隆</strong></li>
+		</ul>
+		<div class="layui-body layui-tab-content site-demo site-demo-body">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-main">
+					<!-- 正文内容 -->
+					<div class="layui-container">
+						<div class="layui-row grid-demo radius" style="padding: 20px; line-height: 10px;">
+							<center>
+								<form class="layui-form" action="">
+									<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+										<div class="layui-form-item">
+											<label class="layui-form-label p30"><strong>当前MAC地址</strong></label>
+											<div class="layui-input-inline p20" id="reboot_task">
+												<input type="text" name="title" readonly lay-verify="title" autocomplete="off" value="0A:34:FF:87:09" class="layui-input">
+											</div>
+											<div class="layui-input-inline p10">
+												<button type="button" class="layui-btn layui-btn-primary layui-btn-radius">
+													<i class="layui-icon">&#xe65c;</i>恢复出厂MAC</button>
+											</div>
+										</div>
+									</div>
+									<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+										<div class="layui-form-item">
+											<label class="layui-form-label p30"><strong>克隆MAC地址</strong></label>
+											<div class="layui-input-inline p20" id="reboot_task">
+												<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="可选填" class="layui-input">
+											</div>
+										</div>
+									</div>
+									<!-- 提交 -->
+									<div class="layui-col-xs9 layui-col-sm9 layui-col-md9">
+										<div class="layui-form-item">
+											<div class="layui-input-block">
+												<button class="layui-btn layui-btn-normal" lay-submit="reboot_task_submit" lay-filter="reboot_task_submit"> <strong>保存</strong></button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-tree-mobile layui-hide">
+		<i class="layui-icon">&#xe602;</i>
+	</div>
+	<div class="site-mobile-shade"></div>
+</div>
+	
+<script>
+var layer_index = null;
+	
+function isValidIP(ip) {
+    var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+    return reg.test(ip);
+}
+
+function close_layer() {
+	if (layer_index != null) {
+		layer.close(layer_index);
+	}
+}
+
+layui.use(['layer', 'form'], function(){
+	var table = layui.table;
+	var layer = layui.layer;
+	var form = layui.form;
+	
+	form.on('switch(reboot_time_switch)', function(data){
+		//alert("2g: " + data.elem.checked);
+		if (data.elem.checked == true) {
+			document.getElementById("reboot_task_div").style.display = "block";
+		}
+		else {
+			document.getElementById("reboot_task_div").style.display = "none";
+		}
+	});
+	
+	//自定义验证规则
+	form.verify({
+		rule_name: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			if (value.length > 32) {
+				return '长度限1~32个字符';
+			}
+		}
+		,src_port: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			if (value > 65535) {
+				return '端口范围在 1~65535';
+			}
+		}
+		,dst_port: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			if (value > 65535) {
+				return '端口范围在 1~65535';
+			}
+		}
+		,dst_ip: function(value) {
+			if (value == null || value.length <= 0) {
+				return '此项不能为空';
+			}
+			
+			if (isValidIP(value) == false) {
+				return 'IP格式错误，格式: 192.168.1.1';
+			}
+		}
+	});
+	
+	var Function = {
+  		reboot: function() {
+			//配置一个透明的询问框
+			layer.confirm(
+				'确认重启路由器？重启过程大约2分钟'
+				,{
+					title: false
+					,closeBtn: false
+					,btn: ['确认', '取消']
+					,shade: 0.2	//背景透明度
+					,btnAlign: 'c'
+				}
+				,function(index) {
+					//确认回调
+					alert("确认回调");
+					
+					layer.close(index);
+				}
+				,function(index) {
+					//取消回调
+					
+					layer.close(index);
+				}
+			);
+		}
+	};
+  
+  	//监听提交
+	form.on('submit(reboot_task_submit)', function(data) {
+		//ajax提交，并接收返回结果，如果返回成功，则返回
+		//调用layer.close关闭当前弹层，并提示设置成功
+		layer.alert(JSON.stringify(data.field), {
+			title: '最终的提交信息'
+		});
+		return false;
+	});
+  
+	$('#reboot').on('click', function() {
+		Function.reboot();
+	});
+});
+</script>
+</body>
+
+</html>

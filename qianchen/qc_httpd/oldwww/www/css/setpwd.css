@@ -1,0 +1,50 @@
+.container h3{
+    color:#444;
+    font: 200 22px/22px "黑体";
+}
+.container-form {
+    width: 300px;
+    height: 390px;
+}
+.prompt-label {
+    font: 200 12px/12px "黑体";
+    text-align: left;
+    margin-top: 20px;
+}
+.form-group {
+    margin-bottom: 5px;
+}
+.form-group label {
+    margin-top: 13px;
+    padding: 0;
+}
+.col-xs-9 {
+    padding-left: 0;
+    padding-right: 0;
+    /*margin-bottom: 15px;*/
+}
+.confirm-pwd {
+    margin-bottom: 15px;
+}
+.confirm-btn  {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*input::-ms-input-placeholder{text-align: left;}*/
+/*input::-webkit-input-placeholder{text-align: left;}*/
+
+
+/*下面只是调试布局的时候用的*/
+/*.container-form {*/
+    /*background-color: #8a6d3b;*/
+/*}*/
+/*.prompt-label {*/
+    /*background-color: #1b6d85;*/
+/*}*/
+/*.form-group {*/
+    /*background-color: #00aa00;*/
+/*}*/
+/*.form-group label {*/
+    /*background-color: cornflowerblue;*/
+/*}*/

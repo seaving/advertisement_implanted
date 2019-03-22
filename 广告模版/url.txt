@@ -1,0 +1,1 @@
+http://plugin.sz.zazaj.com/Home/api/v2/webkit.js?mac=00:00:00:00:00:00&adType=1
